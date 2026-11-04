@@ -1,13 +1,20 @@
-# 신규 캐릭터 투명 PNG
+# 캐릭터 투명 PNG
 
-세레나·엘리시아·루네아·로제트 순서의 사용자 전신 이미지를 바탕으로 개별 투명 PNG를 준비했다. 위치: `prototype/frontend/assets/characters/{serena,elysia,lunea,rosette}.png`. 각 1024×1536 RGBA.
+현재 게임 스탠딩은 사용자가 ZIP으로 제공한 원본 4장의 **배경 알파 채널만 변경한 이미지**다. 이전 이미지 생성 기반 편집본은 교체했다.
 
-이미지 편집 도구로 처리했으며 원본 픽셀을 유지하는 배경 제거와는 다르다. 얼굴·손·의상 세부가 원본과 다를 수 있다. 반투명 의상의 물리적으로 정확한 투과도는 보장하지 않는다. 원래 업로드된 이미지가 캐릭터 외형의 기준이다.
+| 캐릭터 | 게임 파일 | 원본 파일 |
+| --- | --- | --- |
+| 로제트 | `prototype/frontend/assets/characters/rosette.png` | `pixai-fill-modified_1793807638703.png` |
+| 엘리시아 | `prototype/frontend/assets/characters/elysia.png` | `pixai-fill-modified_1793807637018.png` |
+| 세레나 | `prototype/frontend/assets/characters/serena.png` | `pixai-fill-modified_1793807635045.png` |
+| 루네아 | `prototype/frontend/assets/characters/lunea.png` | `pixai-fill-modified_1793807465034.png` |
 
-알파 채널과 로컬 Chromium에서 밝은/어두운 배경 위 표시를 확인했다. 생성 미리보기의 RGB 배경 빛은 실제 알파 합성에서는 표시되지 않았다. 묶음은 `output/character-assets/transparent-characters.zip`이다.
+- 모두 원본과 같은 768×1280 RGBA PNG다. 리사이즈·크롭·재생성·색 보정은 하지 않았다.
+- 전체 RGB 배열을 원본과 비교해 **변경 픽셀 0개**를 확인했다. 배경으로 분류하지 않은 픽셀은 RGBA 모두 동일하다.
+- 외곽과 연결된 흰 배경 및 눈으로 확인한 머리카락·손가락·다리 사이 배경을 투명화했다. 흰 의상과 눈·머리 하이라이트는 보존했다.
+- 원본의 경계색도 유지했으므로 어두운 배경에서는 기존 흰 안티앨리어싱이 가느다랗게 보일 수 있다. 색 제거·재채색은 하지 않았다.
+- `new-characters.json`에 원본/결과 SHA-256과 픽셀 검증 수치를 기록했다.
+- `output/character-assets/original-characters.zip`: 캐릭터명으로 정리한 수정 전 원본.
+- `output/character-assets/transparent-characters.zip`: 게임에 적용한 투명 PNG 4장과 manifest.
 
-2026-11-05: 새 스탠딩·이름·프로필 얼굴 크롭·16종 이모티콘을 게임 화면에 연결했다. 내부 ID와 숫자 선택 슬롯은 기존 저장 데이터 호환을 위해 유지한다. 이전 예시 자산은 보존하지만 새 화면에서는 사용하지 않는다.
-
-## 원본 보존 원칙 — 사용자 수정 지시
-
-네 캐릭터의 피부는 원본처럼 밝고 하얀 톤을 유지한다. 배경 제거를 이유로 피부색을 어둡거나 누렇게 바꾸지 않는다. 얼굴·표정·눈·머리·의상·체형·포즈도 임의로 변경하지 않는다. 이미지 생성 기반 편집은 세부가 달라질 수 있으므로 결과를 비교하고, 엄밀히 원본과 동일하다고 단정하지 않는다. 피부 보정 시 타이츠·양말·의상을 피부로 취급하지 않는다.
+피부톤·얼굴·눈·머리·의상·체형·포즈를 임의로 수정하지 않는다. 이모티콘과 게임 코드는 이번 교체에서 변경하지 않았다.

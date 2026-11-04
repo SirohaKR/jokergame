@@ -2,8 +2,8 @@
   "status": "wired-to-character-roster",
   "format": "RGBA PNG",
   "size": [
-    1024,
-    1536
+    768,
+    1280
   ],
   "characters": [
     {
@@ -27,11 +27,40 @@
       "file": "rosette.png"
     }
   ],
-  "provenance": "Image-generation edit of user-supplied character references via a four-character sheet; not pixel-identical background removal. Original uploads remain in conversation.",
-  "verification": "Alpha channel inspected; rendered in Chromium on light and dark backgrounds.",
+  "provenance": "User-provided ZIP pixai-fill-modified_1793807638703.zip. Original PNGs preserved in output/character-assets/original-characters.zip.",
+  "verification": "Exact full-image RGB equality and unchanged 768x1280 dimensions verified against each original. Only background alpha changed.",
   "limitations": [
-    "Generated edits can differ in face, hands, clothing detail and proportions from uploaded originals.",
-    "Partial transparency of sheer materials is not guaranteed physically accurate."
+    "Existing white antialiasing at silhouette edges is preserved; no color decontamination or relighting."
   ],
-  "skin_correction": "User requested pale white skin across characters; image-tool color correction. Other details requested preserved; pixel-exact preservation not guaranteed."
+  "method": "Connected near-white background regions plus visually reviewed enclosed background gaps; no RGB edits, resizing, regeneration or retouching.",
+  "pixel_verification": [
+    {
+      "id": "rosette",
+      "source_sha256": "c187f1a60d49f3fcfa8f72ad0c64ca11005c1d97a9115afbfe9411725d92a139",
+      "output_sha256": "ae860bb812dc3e9205bfd3e8aecef0400ecb398e337d47d6ff8c7322a9c87035",
+      "rgb_changed_pixels": 0,
+      "alpha_changed_pixels": 736803
+    },
+    {
+      "id": "elysia",
+      "source_sha256": "db9d7e89e653e57612ca44c11f8dbe48c42d4f19b87667964cc8f62e2d96d81f",
+      "output_sha256": "4267b07158798195e8ae5d51ce548b8db4059329a05d74e8efb78f6327e40ad4",
+      "rgb_changed_pixels": 0,
+      "alpha_changed_pixels": 693200
+    },
+    {
+      "id": "serena",
+      "source_sha256": "9985c785eb06bd052817ad5330a58f95656c8edfc01c00a2091ef8e642b76415",
+      "output_sha256": "d02c17f15dfa139b091a3b923c287141fd5b43664c1141ef675009c5a143ecfe",
+      "rgb_changed_pixels": 0,
+      "alpha_changed_pixels": 677491
+    },
+    {
+      "id": "lunea",
+      "source_sha256": "03361e9b172b44b2f4ed296287b0b62439a66060f1fbedea7505b452efaf65e9",
+      "output_sha256": "e0eeadca59d7e7ac81b1062e7e11f31e739a7683a58ca2bccf783c0893d6a760",
+      "rgb_changed_pixels": 0,
+      "alpha_changed_pixels": 700447
+    }
+  ]
 }
