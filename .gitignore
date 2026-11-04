@@ -1,0 +1,16 @@
+# Local tools, screenshots and generated delivery archives
+/tmp/
+/output/prototype-preview/
+*.zip
+node_modules/
+.env
+.env.*
+!.env.example
+*.log
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+coverage/
+test-results/
+playwright-report/

@@ -1,0 +1,31 @@
+{
+  "layout": "2x2",
+  "expressions": [
+    "laugh",
+    "shock",
+    "hello",
+    "think"
+  ],
+  "characters": [
+    {
+      "id": "seoha",
+      "file": "seoha.png",
+      "prompt": "Create ONE square game emote sprite atlas for the character in the reference. Reference is character identity source: navy blue bob hair, blue eyes, grey blazer and navy tie. Cute expressive chibi anime head-and-shoulders sticker illustrations, faithful recognizable face/hair/outfit, polished clean lineart, soft cel shading, very readable at 100px. EXACTLY FOUR equally sized illustrations in a strict 2x2 grid on genuinely transparent background. Each sticker fully contained in its own square quadrant with generous 12% transparent padding, no overlap, no border or panels. TOP LEFT: delighted smug laughter, closed happy eyes, hand over mouth. TOP RIGHT: comically shocked/surprised, wide eyes, tiny sweat drop, hands beside cheeks. BOTTOM LEFT: warm friendly greeting, waving hand and smile. BOTTOM RIGHT: suspicious/thinking, narrowed eyes and hand on chin. No text, no lettering, no speech bubbles, no extra characters, no background, no checkerboard. Each quadrant has the SAME character and scale. Full hat and hair must fit inside each quadrant. Output a single square PNG with alpha, 2x2 evenly divided atlas, designed for CSS background-position 0%/100%."
+    },
+    {
+      "id": "orca",
+      "file": "orca.png",
+      "prompt": "Create ONE square game emote sprite atlas for the character in the reference. Reference is character identity source: long silver hair, purple eyes, black-and-white orca hat, black shirt. Cute expressive chibi anime head-and-shoulders sticker illustrations, faithful recognizable face/hair/outfit, polished clean lineart, soft cel shading, very readable at 100px. EXACTLY FOUR equally sized illustrations in a strict 2x2 grid on genuinely transparent background. Each sticker fully contained in its own square quadrant with generous 12% transparent padding, no overlap, no border or panels. TOP LEFT: delighted smug laughter, closed happy eyes, hand over mouth. TOP RIGHT: comically shocked/surprised, wide eyes, tiny sweat drop, hands beside cheeks. BOTTOM LEFT: warm friendly greeting, waving hand and smile. BOTTOM RIGHT: suspicious/thinking, narrowed eyes and hand on chin. No text, no lettering, no speech bubbles, no extra characters, no background, no checkerboard. Each quadrant has the SAME character and scale. Full hat and hair must fit inside each quadrant. Output a single square PNG with alpha, 2x2 evenly divided atlas, designed for CSS background-position 0%/100%."
+    },
+    {
+      "id": "haru",
+      "file": "haru.png",
+      "prompt": "Create ONE square game emote sprite atlas for the character in the reference. Reference is character identity source: rose brown shoulder-length hair, brown eyes, cream cardigan. Cute expressive chibi anime head-and-shoulders sticker illustrations, faithful recognizable face/hair/outfit, polished clean lineart, soft cel shading, very readable at 100px. EXACTLY FOUR equally sized illustrations in a strict 2x2 grid on genuinely transparent background. Each sticker fully contained in its own square quadrant with generous 12% transparent padding, no overlap, no border or panels. TOP LEFT: delighted smug laughter, closed happy eyes, hand over mouth. TOP RIGHT: comically shocked/surprised, wide eyes, tiny sweat drop, hands beside cheeks. BOTTOM LEFT: warm friendly greeting, waving hand and smile. BOTTOM RIGHT: suspicious/thinking, narrowed eyes and hand on chin. No text, no lettering, no speech bubbles, no extra characters, no background, no checkerboard. Each quadrant has the SAME character and scale. Full hat and hair must fit inside each quadrant. Output a single square PNG with alpha, 2x2 evenly divided atlas, designed for CSS background-position 0%/100%."
+    },
+    {
+      "id": "yuna",
+      "file": "yuna.png",
+      "prompt": "Create ONE square game emote sprite atlas for the character in the reference. Reference is character identity source: silver bob hair, teal eyes, beige cardigan and red ribbon. Cute expressive chibi anime head-and-shoulders sticker illustrations, faithful recognizable face/hair/outfit, polished clean lineart, soft cel shading, very readable at 100px. EXACTLY FOUR equally sized illustrations in a strict 2x2 grid on genuinely transparent background. Each sticker fully contained in its own square quadrant with generous 12% transparent padding, no overlap, no border or panels. TOP LEFT: delighted smug laughter, closed happy eyes, hand over mouth. TOP RIGHT: comically shocked/surprised, wide eyes, tiny sweat drop, hands beside cheeks. BOTTOM LEFT: warm friendly greeting, waving hand and smile. BOTTOM RIGHT: suspicious/thinking, narrowed eyes and hand on chin. No text, no lettering, no speech bubbles, no extra characters, no background, no checkerboard. Each quadrant has the SAME character and scale. Full hat and hair must fit inside each quadrant. Output a single square PNG with alpha, 2x2 evenly divided atlas, designed for CSS background-position 0%/100%."
+    }
+  ]
+}

@@ -1,0 +1,1749 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "한 장의 비밀 API 설계",
+    "version": "0.1.0",
+    "description": "로컬 AI 프로토타입의 후속 온라인 서버 계약. /api/health 외 미구현. 게임 행동/이모티콘은 별도 WebSocket 이벤트 명세 참조. 인증 방식은 서버 세션 쿠키+CSRF 토큰을 설계 기준으로 하되 로그인 공급자는 미정."
+  },
+  "servers": [
+    {
+      "url": "/",
+      "description": "현재 서버"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Implemented"
+    },
+    {
+      "name": "Planned"
+    }
+  ],
+  "security": [
+    {
+      "sessionCookie": []
+    }
+  ],
+  "paths": {
+    "/api/health": {
+      "get": {
+        "summary": "로컬 서버 상태",
+        "operationId": "get_api_health",
+        "tags": [
+          "Implemented"
+        ],
+        "description": "구현됨.",
+        "x-implementation-status": "implemented",
+        "responses": {
+          "200": {
+            "description": "성공",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Health"
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/api/v1/me": {
+      "get": {
+        "summary": "내 프로필·지갑",
+        "operationId": "get_api_v1_me",
+        "tags": [
+          "Planned"
+        ],
+        "description": "설계 계약. 현재 프로토타입에서는 501 NOT_IMPLEMENTED 반환. 화면: W01 W15.",
+        "x-implementation-status": "planned",
+        "responses": {
+          "200": {
+            "description": "성공",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Profile"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "잘못된 요청",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "인증 필요",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "참가/소유 권한 없음",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "찾을 수 없음",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "상태 충돌 또는 중복 요청 본문 불일치",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "요청 제한",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "501": {
+            "description": "현재 버전 미구현",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/me/settings": {
+      "patch": {
+        "summary": "설정 변경",
+        "operationId": "patch_api_v1_me_settings",
+        "tags": [
+          "Planned"
+        ],
+        "description": "설계 계약. 현재 프로토타입에서는 501 NOT_IMPLEMENTED 반환. 화면: W12.",
+        "x-implementation-status": "planned",
+        "responses": {
+          "200": {
+            "description": "성공",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Settings"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "잘못된 요청",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "인증 필요",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "참가/소유 권한 없음",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "찾을 수 없음",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "상태 충돌 또는 중복 요청 본문 불일치",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "요청 제한",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "501": {
+            "description": "현재 버전 미구현",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "X-CSRF-Token",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Settings"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/characters": {
+      "get": {
+        "summary": "캐릭터 목록",
+        "operationId": "get_api_v1_characters",
+        "tags": [
+          "Planned"
+        ],
+        "description": "설계 계약. 현재 프로토타입에서는 501 NOT_IMPLEMENTED 반환. 화면: W02 W15.",
+        "x-implementation-status": "planned",
+        "responses": {
+          "200": {
+            "description": "성공",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Character"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "잘못된 요청",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "인증 필요",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "참가/소유 권한 없음",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "찾을 수 없음",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "상태 충돌 또는 중복 요청 본문 불일치",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "요청 제한",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "501": {
+            "description": "현재 버전 미구현",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/matches": {
+      "post": {
+        "summary": "비공개 매치 생성",
+        "operationId": "post_api_v1_matches",
+        "tags": [
+          "Planned"
+        ],
+        "description": "설계 계약. 현재 프로토타입에서는 501 NOT_IMPLEMENTED 반환. 화면: W02.",
+        "x-implementation-status": "planned",
+        "responses": {
+          "201": {
+            "description": "성공",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Match"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "잘못된 요청",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "인증 필요",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "참가/소유 권한 없음",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "찾을 수 없음",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "상태 충돌 또는 중복 요청 본문 불일치",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "요청 제한",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "501": {
+            "description": "현재 버전 미구현",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": "동일 키/본문 재요청은 같은 결과. 동일 키/다른 본문은 409."
+          },
+          {
+            "name": "X-CSRF-Token",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateMatch"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/matches/{matchId}": {
+      "get": {
+        "summary": "참가 중인 매치 정보",
+        "operationId": "get_api_v1_matches__matchId_",
+        "tags": [
+          "Planned"
+        ],
+        "description": "설계 계약. 현재 프로토타입에서는 501 NOT_IMPLEMENTED 반환. 화면: W02.",
+        "x-implementation-status": "planned",
+        "responses": {
+          "200": {
+            "description": "성공",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Match"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "잘못된 요청",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "인증 필요",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "참가/소유 권한 없음",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "찾을 수 없음",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "상태 충돌 또는 중복 요청 본문 불일치",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "요청 제한",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "501": {
+            "description": "현재 버전 미구현",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "matchId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/matches/{matchId}/join": {
+      "post": {
+        "summary": "매치 참가",
+        "operationId": "post_api_v1_matches__matchId__join",
+        "tags": [
+          "Planned"
+        ],
+        "description": "설계 계약. 현재 프로토타입에서는 501 NOT_IMPLEMENTED 반환. 화면: W02.",
+        "x-implementation-status": "planned",
+        "responses": {
+          "200": {
+            "description": "성공",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Match"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "잘못된 요청",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "인증 필요",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "참가/소유 권한 없음",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "찾을 수 없음",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "상태 충돌 또는 중복 요청 본문 불일치",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "요청 제한",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "501": {
+            "description": "현재 버전 미구현",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "matchId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": "동일 키/본문 재요청은 같은 결과. 동일 키/다른 본문은 409."
+          },
+          {
+            "name": "X-CSRF-Token",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/matches/{matchId}/start": {
+      "post": {
+        "summary": "호스트가 매치 시작",
+        "operationId": "post_api_v1_matches__matchId__start",
+        "tags": [
+          "Planned"
+        ],
+        "description": "설계 계약. 현재 프로토타입에서는 501 NOT_IMPLEMENTED 반환. 화면: W02.",
+        "x-implementation-status": "planned",
+        "responses": {
+          "200": {
+            "description": "성공",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Match"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "잘못된 요청",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "인증 필요",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "참가/소유 권한 없음",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "찾을 수 없음",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "상태 충돌 또는 중복 요청 본문 불일치",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "요청 제한",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "501": {
+            "description": "현재 버전 미구현",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "matchId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": "동일 키/본문 재요청은 같은 결과. 동일 키/다른 본문은 409."
+          },
+          {
+            "name": "X-CSRF-Token",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/matches/{matchId}/leave": {
+      "post": {
+        "summary": "매치 나가기",
+        "operationId": "post_api_v1_matches__matchId__leave",
+        "tags": [
+          "Planned"
+        ],
+        "description": "설계 계약. 현재 프로토타입에서는 501 NOT_IMPLEMENTED 반환. 화면: W12.",
+        "x-implementation-status": "planned",
+        "responses": {
+          "200": {
+            "description": "성공",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Match"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "잘못된 요청",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "인증 필요",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "참가/소유 권한 없음",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "찾을 수 없음",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "상태 충돌 또는 중복 요청 본문 불일치",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "요청 제한",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "501": {
+            "description": "현재 버전 미구현",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "matchId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": "동일 키/본문 재요청은 같은 결과. 동일 키/다른 본문은 409."
+          },
+          {
+            "name": "X-CSRF-Token",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/sets/{setId}/snapshot": {
+      "get": {
+        "summary": "본인에게 허용된 상태 복구",
+        "operationId": "get_api_v1_sets__setId__snapshot",
+        "tags": [
+          "Planned"
+        ],
+        "description": "설계 계약. 현재 프로토타입에서는 501 NOT_IMPLEMENTED 반환. 화면: W03~W10.",
+        "x-implementation-status": "planned",
+        "responses": {
+          "200": {
+            "description": "성공",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Snapshot"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "잘못된 요청",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "인증 필요",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "참가/소유 권한 없음",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "찾을 수 없음",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "상태 충돌 또는 중복 요청 본문 불일치",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "요청 제한",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "501": {
+            "description": "현재 버전 미구현",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "setId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/matches/{matchId}/results": {
+      "get": {
+        "summary": "최종 합산 결과와 지급된 보상",
+        "operationId": "get_api_v1_matches__matchId__results",
+        "tags": [
+          "Planned"
+        ],
+        "description": "설계 계약. 현재 프로토타입에서는 501 NOT_IMPLEMENTED 반환. 화면: W14.",
+        "x-implementation-status": "planned",
+        "responses": {
+          "200": {
+            "description": "성공",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MatchResult"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "잘못된 요청",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "인증 필요",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "참가/소유 권한 없음",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "찾을 수 없음",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "상태 충돌 또는 중복 요청 본문 불일치",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "요청 제한",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "501": {
+            "description": "현재 버전 미구현",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "matchId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/me/gifts": {
+      "post": {
+        "summary": "선물 구매 및 호감도 증가",
+        "operationId": "post_api_v1_me_gifts",
+        "tags": [
+          "Planned"
+        ],
+        "description": "설계 계약. 현재 프로토타입에서는 501 NOT_IMPLEMENTED 반환. 화면: W15.",
+        "x-implementation-status": "planned",
+        "responses": {
+          "200": {
+            "description": "성공",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PurchaseResult"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "잘못된 요청",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "인증 필요",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "참가/소유 권한 없음",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "찾을 수 없음",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "상태 충돌 또는 중복 요청 본문 불일치",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "요청 제한",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "501": {
+            "description": "현재 버전 미구현",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": "동일 키/본문 재요청은 같은 결과. 동일 키/다른 본문은 409."
+          },
+          {
+            "name": "X-CSRF-Token",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GiftRequest"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "sessionCookie": {
+        "type": "apiKey",
+        "in": "cookie",
+        "name": "sid",
+        "description": "HttpOnly, Secure, SameSite=Lax 세션 쿠키. 인증 API/공급자는 미정."
+      }
+    },
+    "schemas": {
+      "Error": {
+        "type": "object",
+        "required": [
+          "code",
+          "message"
+        ],
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          },
+          "requestId": {
+            "type": "string"
+          }
+        }
+      },
+      "Health": {
+        "type": "object",
+        "required": [
+          "status",
+          "mode",
+          "version",
+          "database"
+        ],
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "ok"
+            ]
+          },
+          "mode": {
+            "type": "string",
+            "enum": [
+              "local-ai"
+            ]
+          },
+          "version": {
+            "type": "string"
+          },
+          "database": {
+            "type": "string",
+            "enum": [
+              "not-connected"
+            ]
+          }
+        }
+      },
+      "Profile": {
+        "type": "object",
+        "required": [
+          "id",
+          "nickname",
+          "coins",
+          "rankPoints"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "nickname": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 16
+          },
+          "coins": {
+            "type": "integer",
+            "format": "int64",
+            "minimum": 0
+          },
+          "rankPoints": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "selectedCharacterId": {
+            "type": "string"
+          }
+        }
+      },
+      "Character": {
+        "type": "object",
+        "required": [
+          "id",
+          "displayName",
+          "standingAsset"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "displayName": {
+            "type": "string"
+          },
+          "standingAsset": {
+            "type": "string"
+          },
+          "affinity": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "ownedCosmeticIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "Settings": {
+        "type": "object",
+        "properties": {
+          "selectedCharacterId": {
+            "type": "string"
+          },
+          "bgmVolume": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100
+          },
+          "sfxVolume": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100
+          },
+          "turnSound": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateMatch": {
+        "type": "object",
+        "required": [
+          "characterId",
+          "plannedSets"
+        ],
+        "properties": {
+          "characterId": {
+            "type": "string"
+          },
+          "plannedSets": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 99
+          },
+          "mode": {
+            "type": "string",
+            "enum": [
+              "private"
+            ]
+          }
+        },
+        "additionalProperties": false
+      },
+      "Match": {
+        "type": "object",
+        "required": [
+          "id",
+          "status",
+          "plannedSets",
+          "players"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "inviteCode": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "lobby",
+              "playing",
+              "finished",
+              "cancelled"
+            ]
+          },
+          "plannedSets": {
+            "type": "integer"
+          },
+          "players": {
+            "type": "array",
+            "maxItems": 4,
+            "items": {
+              "type": "object",
+              "required": [
+                "seat",
+                "nickname",
+                "characterId",
+                "isBot"
+              ],
+              "properties": {
+                "seat": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 3
+                },
+                "nickname": {
+                  "type": "string"
+                },
+                "characterId": {
+                  "type": "string"
+                },
+                "isBot": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      },
+      "Card": {
+        "type": "object",
+        "required": [
+          "id",
+          "rank",
+          "suit"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "rank": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 13
+          },
+          "suit": {
+            "type": "string",
+            "enum": [
+              "♠",
+              "♥",
+              "♦",
+              "♣",
+              "★"
+            ]
+          }
+        }
+      },
+      "PlayerView": {
+        "type": "object",
+        "required": [
+          "seat",
+          "handCount"
+        ],
+        "properties": {
+          "seat": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 3
+          },
+          "handCount": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 53
+          },
+          "ownHand": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Card"
+            },
+            "description": "요청자 본인에게만 제공. 다른 좌석에는 필드 자체를 생략."
+          },
+          "finishOrder": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 4
+          }
+        }
+      },
+      "Snapshot": {
+        "type": "object",
+        "required": [
+          "setId",
+          "revision",
+          "phase",
+          "actorSeat",
+          "players"
+        ],
+        "properties": {
+          "setId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "revision": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "phase": {
+            "type": "string",
+            "enum": [
+              "action",
+              "select",
+              "reveal",
+              "discard",
+              "ended"
+            ]
+          },
+          "actorSeat": {
+            "type": "integer"
+          },
+          "phaseDeadline": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "players": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PlayerView"
+            }
+          },
+          "privateDrawResult": {
+            "type": "object",
+            "description": "당사자 둘만 제공. 관전자/대기자에게 생략.",
+            "properties": {
+              "card": {
+                "$ref": "#/components/schemas/Card"
+              },
+              "sourceSeat": {
+                "type": "integer"
+              },
+              "actorSeat": {
+                "type": "integer"
+              }
+            }
+          }
+        }
+      },
+      "SetResult": {
+        "type": "object",
+        "required": [
+          "setNo",
+          "players"
+        ],
+        "properties": {
+          "setNo": {
+            "type": "integer"
+          },
+          "players": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "seat",
+                "finishOrder",
+                "winner",
+                "score"
+              ],
+              "properties": {
+                "seat": {
+                  "type": "integer"
+                },
+                "finishOrder": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 4
+                },
+                "winner": {
+                  "type": "boolean"
+                },
+                "score": {
+                  "type": "integer",
+                  "enum": [
+                    1000,
+                    500,
+                    0,
+                    -500
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "MatchResult": {
+        "type": "object",
+        "properties": {
+          "matchId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "sets": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SetResult"
+            }
+          },
+          "rankings": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "seat": {
+                  "type": "integer"
+                },
+                "place": {
+                  "type": "integer"
+                },
+                "totalScore": {
+                  "type": "integer"
+                },
+                "coinsDelta": {
+                  "type": "integer"
+                },
+                "rankDelta": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        }
+      },
+      "GiftRequest": {
+        "type": "object",
+        "required": [
+          "characterId",
+          "productId"
+        ],
+        "properties": {
+          "characterId": {
+            "type": "string"
+          },
+          "productId": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PurchaseResult": {
+        "type": "object",
+        "required": [
+          "coins",
+          "affinity"
+        ],
+        "properties": {
+          "coins": {
+            "type": "integer",
+            "format": "int64",
+            "minimum": 0
+          },
+          "affinity": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "unlockedIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}
