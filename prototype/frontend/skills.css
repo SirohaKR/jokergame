@@ -10,3 +10,29 @@
 .skill-dialog fieldset{border:0;padding:0;margin:20px 0}.skill-targets{display:flex;flex-wrap:wrap;gap:8px}.skill-targets .chosen{background:#e5dded;border-color:#8a6c9e}
 .skill-dialog label{display:block;margin:18px 0}.skill-dialog select{display:block;width:100%;padding:12px;margin-top:8px;background:#fff;color:#233e43;border:1px solid #b9c6bd;border-radius:8px}
 @media(max-width:600px){.skill-stage{padding:16px}.skill-stage>img{height:240px}.skill-stage h2{font-size:23px}.skill-stage p{font-size:15px}.skill-button{font-size:13px;padding:8px 12px;margin-bottom:6px}.turn-action>small{max-width:240px;margin:auto}}
+.skill-portrait{position:relative;width:360px;height:260px;flex-shrink:0;isolation:isolate}
+.skill-portrait>img{position:relative;height:100%;max-width:100%;object-fit:contain;z-index:2}
+.skill-stage .skill-quote{font-size:16px;color:#68547e;font-style:italic}
+.skill-stage .skill-result{max-width:540px;line-height:1.55;font-size:15px;min-height:24px}
+.skill-reflect-warning{padding:12px;border-left:3px solid #9673a9;background:#f1eaf5;color:#584368}
+.skill-effect{position:absolute;inset:0;z-index:1;pointer-events:none}
+.skill-ring{position:absolute;left:50%;top:48%;width:220px;height:220px;margin:-110px;border:1px solid var(--accent);border-radius:50%;opacity:.6}
+.ring-two{transform:scale(.82);border-style:dashed}
+.effect-card{position:absolute;left:50%;top:50%;width:44px;height:64px;margin:-32px -22px;border-radius:6px;border:2px solid #fff;background:linear-gradient(135deg,#6f6286,#3f405d);box-shadow:0 3px 12px #34314d26}
+.effect-card>i{position:absolute;inset:7px;border:1px solid #d8cde7;border-radius:3px}
+.effect-card>i:after{content:'';position:absolute;width:12px;height:12px;border:1px solid #d8cde7;top:50%;left:50%;transform:translate(-50%,-50%) rotate(45deg)}
+.effect-gift .effect-card{animation:gift-travel 3s ease-in-out both}
+.effect-gift.is-reflected .effect-card{animation-name:gift-return}
+.effect-peek .effect-card{animation:peek-fan 3s ease-in-out both;--offset:calc((var(--card-index) - 1)*65px)}
+.effect-reflect .skill-ring{border-width:3px;animation:shield-bloom 3s ease-out both}
+.effect-reflect .ring-two{animation-direction:reverse}
+.effect-reflect .effect-card{display:none}
+.effect-redeal .effect-card{animation:redeal-scatter 3s ease-in-out both}
+.skill-effect .effect-card,.skill-effect .skill-ring{animation-delay:var(--effect-delay,0ms);animation-play-state:var(--effect-state,running)}
+@keyframes gift-travel{0%,15%{transform:translate(-145px,35px) rotate(-15deg);opacity:0}30%{opacity:1}80%,100%{transform:translate(145px,-10px) rotate(15deg);opacity:1}}
+@keyframes gift-return{0%,15%{transform:translate(-145px,35px) rotate(-15deg);opacity:0}45%{transform:translate(145px,-10px) rotate(15deg);opacity:1}80%,100%{transform:translate(-145px,35px) rotate(-15deg);opacity:1}}
+@keyframes peek-fan{0%{transform:translate(0,65px);opacity:0}35%,65%{transform:translate(var(--offset),65px);opacity:1}100%{transform:translate(calc(var(--offset)*-1),65px);opacity:1}}
+@keyframes shield-bloom{0%{transform:scale(.4);opacity:0}35%{transform:scale(1.2);opacity:.9}100%{transform:scale(1);opacity:.65}}
+@keyframes redeal-scatter{0%,15%{transform:rotate(var(--card-angle)) translateY(-15px);opacity:0}40%{transform:rotate(calc(var(--card-angle) + 180deg)) translateY(-60px);opacity:1}85%,100%{transform:rotate(calc(var(--card-angle) + 360deg)) translateY(-140px);opacity:1}}
+@media(max-width:600px){.skill-portrait{width:280px;height:220px}.skill-stage .skill-quote{font-size:13px}.skill-stage .skill-result{font-size:13px;max-width:280px}.skill-stage h2{margin:8px}.skill-private{padding:10px 24px}.skill-effect{transform:scale(.8)}}
+@media(prefers-reduced-motion:reduce){.skill-effect .effect-card,.skill-effect .skill-ring{animation:none}.effect-gift .effect-card{transform:translate(105px,20px)}.effect-peek .effect-card{transform:translate(var(--offset),65px)}.effect-redeal .effect-card{transform:rotate(var(--card-angle)) translateY(-120px)}}
