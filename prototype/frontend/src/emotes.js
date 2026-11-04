@@ -12,8 +12,9 @@ export function privateDrawCue(state,viewer=0){
   if(state.phase!=='reveal'||!state.draw||![state.draw.actor,state.draw.source].includes(viewer))return null;
   return state.draw.card.rank===0?{giver:'laugh',taker:'shock',sound:'joker'}:{giver:null,taker:null,sound:'click'};
 }
+export function emoteLabel(character,id){return character.emoteLabels?.[id]??emoteById(id)?.label??'';}
 // One 2x2 transparent atlas per character, kept intact; no destructive image crops.
 export function emoteSprite(character,id,extraClass=''){
   const e=emoteById(id);if(!e)return '';
-  return `<span class="emote-sprite ${extraClass}" role="img" aria-label="${character.name} ${e.description}" style="--emote-image:url('assets/emotes/${character.id}.png');--emote-x:${e.x}%;--emote-y:${e.y}%"></span>`;
+  return `<span class="emote-sprite ${extraClass}" role="img" aria-label="${character.name} ${e.description}" style="--emote-image:url('assets/emotes/${character.assetId??character.id}.png');--emote-x:${e.x}%;--emote-y:${e.y}%"></span>`;
 }

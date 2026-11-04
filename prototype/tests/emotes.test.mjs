@@ -16,3 +16,12 @@ test('조커 자동 반응과 효과음은 뽑기 당사자만 수신',()=>{
  assert.equal(privateDrawCue({...s,phase:'select'},1),null);
  s.draw.card.rank=7;assert.deepEqual(privateDrawCue(s,1),{giver:null,taker:null,sound:'click'});
 });
+
+test('new character artwork and captions keep legacy selections compatible',async()=>{
+ const {CHARACTERS,imagePath}=await import('../frontend/src/data.js');
+ const {emoteSprite,emoteLabel}=await import('../frontend/src/emotes.js');
+ assert.deepEqual(CHARACTERS.map(c=>c.id),['seoha','orca','haru','yuna']);
+ assert.deepEqual(CHARACTERS.map(c=>c.assetId),['serena','elysia','lunea','rosette']);
+ for(const e of EMOTES)assert.equal(new Set(CHARACTERS.map(c=>emoteLabel(c,e.id))).size,4);
+ for(const c of CHARACTERS){assert.equal(imagePath(c),`assets/characters/${c.assetId}.png`);assert.ok(emoteSprite(c,'laugh').includes(`assets/emotes/${c.assetId}.png`));}
+});

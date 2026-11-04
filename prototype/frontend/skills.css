@@ -1,0 +1,12 @@
+.skill-button{display:block;margin:0 auto 10px;max-width:300px;font-size:16px}
+.skill-button:disabled{opacity:.48;cursor:not-allowed}
+.skill-stage{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;background:radial-gradient(ellipse,#e8e4f3,#f7f5ef);z-index:5;text-align:center;padding:24px}
+.skill-stage>img{height:300px;max-width:250px;object-fit:contain}
+.skill-stage h2{margin:10px;font-size:32px;color:#58456f}
+.skill-stage p{margin:8px;font-size:18px}
+.skill-private{display:flex;flex-direction:column;gap:8px;background:#fffdf9;border:1px solid #c7b7d9;border-radius:16px;padding:12px 32px;margin:8px}
+.skill-private strong{font-size:32px}.skill-stage>small{margin-top:12px;color:#66716a}
+.skill-dialog{max-height:85vh;overflow-y:auto}
+.skill-dialog fieldset{border:0;padding:0;margin:20px 0}.skill-targets{display:flex;flex-wrap:wrap;gap:8px}.skill-targets .chosen{background:#e5dded;border-color:#8a6c9e}
+.skill-dialog label{display:block;margin:18px 0}.skill-dialog select{display:block;width:100%;padding:12px;margin-top:8px;background:#fff;color:#233e43;border:1px solid #b9c6bd;border-radius:8px}
+@media(max-width:600px){.skill-stage{padding:16px}.skill-stage>img{height:240px}.skill-stage h2{font-size:23px}.skill-stage p{font-size:15px}.skill-button{font-size:13px;padding:8px 12px;margin-bottom:6px}.turn-action>small{max-width:240px;margin:auto}}

@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "date": "2026-11-05",
+  "layout": "2x2; top-left laugh, top-right shock, bottom-left hello, bottom-right think",
+  "skin": "Very fair ivory with subtle cool pink blush; preserved character identity references",
+  "characters": [
+    {
+      "id": "serena",
+      "file": "serena.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "brief": "Serena: silver straight hair with lilac tips, left small crescent pin and thin braid, golden eyes, ivory collar with silver rose brooch and thin black ribbon, black dress. Sly playful trickster. TOP LEFT laugh: smug narrow-eyed giggle, one hand elegantly near lips, head tilted, one tiny sparkle. TOP RIGHT shock: composure broken, golden eyes wide, tiny open mouth, stiff shoulders, one sweat drop. BOTTOM LEFT hello: knowing wink, palm turned up in a tiny finger wave, teasing smile. BOTTOM RIGHT suspicious: extreme side-eye, chin resting on fingers, one eyebrow up, lips pursed. All four poses different."
+    },
+    {
+      "id": "elysia",
+      "file": "elysia.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "brief": "Elysia: dusty lavender low twin tails, violet eyes, two small star clips, ivory collar with star clasp and lavender ribbon, dark navy cape over lavender dress. Shy imaginative girl. TOP LEFT laugh: bashful delighted closed-eye laugh, both hands close to chest, slight head tuck. TOP RIGHT shock: comically panicked wide violet eyes, small round mouth, hands lifted beside cheeks, two tiny sweat drops. BOTTOM LEFT hello: timidly peeking from behind one raised cape edge and small hand wave, gentle nervous smile. BOTTOM RIGHT suspicious: unexpectedly serious fantasy-detective face, finger to temple, eyes sharply focused, tiny abstract thought sparkle. Keep skin pale even in shock, no dark face shading."
+    },
+    {
+      "id": "lunea",
+      "file": "lunea.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "brief": "Lunea: fluffy beige hair, loose side braid, ahoge, blue sleep mask pushed up on head with crescent embroidery, droopy blue-gray eyes, oversized dusty blue cardigan, ivory rounded collar and small blue ribbon. Sleepy laid-back girl. TOP LEFT laugh: nearly closed smiling eyes, slow content little grin, cheek resting in sleeve-covered palm. TOP RIGHT shock: suddenly fully awake, huge rounded eyes, small startled mouth, sleeve-covered hands flung up, sleep mask remains above eyes. BOTTOM LEFT hello: sleepy yawn with one sleeve near mouth while the other hand gives a lazy tiny wave. BOTTOM RIGHT suspicious: unimpressed half-lidded sideways stare, tucked into cardigan sleeves, head leaning to the other side. Each pose distinct, no props beyond original mask."
+    },
+    {
+      "id": "rosette",
+      "file": "rosette.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "brief": "Rosette: coral high ponytail with large ivory scrunchie, bright aqua eyes, small canine tooth, aqua jacket rolled cuffs, ivory collar with small heart gemstone, coral dress. Outgoing energetic mood-maker. TOP LEFT laugh: exuberant open-mouth laugh with visible tiny canine, eyes squeezed happily, both fists raised in celebration. TOP RIGHT shock: dramatic comic dismay, open aqua eyes and wide mouth, hands clutching own cheeks, ponytail flying to side; pale skin unchanged. BOTTOM LEFT hello: big enthusiastic open-hand wave, bright open smile, torso leaning forward toward viewer. BOTTOM RIGHT suspicious: puffed cheeks, hands on hips, one eyebrow raised, playful accusatory side glance. Distinct silhouettes, no text."
+    }
+  ]
+}

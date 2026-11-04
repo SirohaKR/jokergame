@@ -9,3 +9,12 @@
 @keyframes joker-card{0%{transform:scale(.5) rotateY(90deg)}60%{transform:scale(1.15) rotate(-8deg)}100%{transform:scale(1) rotate(0)}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 .emote-bubble{top:auto;white-space:normal}.emote-options button{width:auto}
+@media(max-width:600px){
+ .emote-gallery{padding:20px;overflow-x:hidden}
+ .emote-gallery h2{font-size:22px}
+ .emote-gallery-row{grid-template-columns:repeat(4,minmax(0,1fr));gap:8px 4px;padding:12px 0}
+ .emote-gallery-row>b{grid-column:1/-1;font-size:14px}
+ .emote-gallery-row button{min-width:0;padding:0}
+ .emote-gallery-row .emote-sprite{width:100%;max-width:76px}
+ .emote-gallery-row button>span:last-child{display:block;font-size:11px;line-height:1.4;word-break:keep-all;overflow-wrap:anywhere}
+}

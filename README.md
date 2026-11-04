@@ -34,6 +34,16 @@ git commit -m "변경 내용"
 git push
 ```
 
+## 캐릭터·세계관 기획
+
+- [캐릭터 감성·셀 채색 방향](docs/ART-DIRECTION.md): 참고 작품별 검토 방향과 선화·명암 기준
+
+- [캐릭터 설정집](docs/CHARACTERS.md): 네 여성 캐릭터의 성격·외형·과거·대사·관계와 스킬 콘셉트
+- [세계관](docs/WORLD.md): 마도도시 루미에르, 주점 ‘별의 끝’, 마법과 카드놀이 문화
+- [스킬·PixAI 제작 가이드](docs/CHARACTER-DESIGN.md): 스킬 판정 초안, 이미지 생성 프롬프트, Live2D 준비 조건
+
+세레나·엘리시아·루네아·로제트의 스탠딩과 16종 이모티콘을 게임에 적용했습니다. 설정 문서의 스킬과 호감도 이야기는 후속 개발 범위입니다.
+
 ## 구성
 
 - `prototype/frontend/`: HTML/CSS/JavaScript, 캐릭터 스탠딩 및 이모티콘 자산

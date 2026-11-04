@@ -1,0 +1,37 @@
+{
+  "status": "wired-to-character-roster",
+  "format": "RGBA PNG",
+  "size": [
+    1024,
+    1536
+  ],
+  "characters": [
+    {
+      "id": "serena",
+      "name": "세레나",
+      "file": "serena.png"
+    },
+    {
+      "id": "elysia",
+      "name": "엘리시아",
+      "file": "elysia.png"
+    },
+    {
+      "id": "lunea",
+      "name": "루네아",
+      "file": "lunea.png"
+    },
+    {
+      "id": "rosette",
+      "name": "로제트",
+      "file": "rosette.png"
+    }
+  ],
+  "provenance": "Image-generation edit of user-supplied character references via a four-character sheet; not pixel-identical background removal. Original uploads remain in conversation.",
+  "verification": "Alpha channel inspected; rendered in Chromium on light and dark backgrounds.",
+  "limitations": [
+    "Generated edits can differ in face, hands, clothing detail and proportions from uploaded originals.",
+    "Partial transparency of sheer materials is not guaranteed physically accurate."
+  ],
+  "skin_correction": "User requested pale white skin across characters; image-tool color correction. Other details requested preserved; pixel-exact preservation not guaranteed."
+}
