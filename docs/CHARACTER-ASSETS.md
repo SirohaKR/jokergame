@@ -28,7 +28,7 @@
 | 세레나 | `prototype/frontend/assets/skills/serena.webp` | `serena-skill.png` 1888×1056 |
 | 엘리시아 | `prototype/frontend/assets/skills/elysia.webp` | `elysia-skill.png` 1888×1056 |
 | 루네아 | `prototype/frontend/assets/skills/lunea.webp` | `lunea-skill.png` 1280×720 |
-| 로제트 | 없음 → 스탠딩으로 대체 | 드라이브에 아직 없음 |
+| 로제트 | `prototype/frontend/assets/skills/rosette.webp` | 2026-11-06 사용자 업로드 1280×720 |
 
 - 1280px 너비 WebP(품질 86)로 줄여 저장했다. 다른 보정은 하지 않았다.
-- 로제트 컷인을 만들면 `assets/skills/rosette.webp`로 넣고 `data.js`의 `SKILL_CUTINS`에 한 줄 추가하면 된다.
+- 컷인이 없는 캐릭터는 스탠딩으로 대체된다. 새 컷인은 `assets/skills/<id>.webp`로 넣고 `data.js`의 `SKILL_CUTINS`에 한 줄 추가한다.

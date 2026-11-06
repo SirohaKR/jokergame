@@ -18,5 +18,5 @@ export function skillEffectMarkup(event){
 // Full-width character cut-in shown at the start of every skill. Purely decorative: no card data.
 export function skillCutinMarkup(character,{name,skillName,cutin,standing}){
  const art=cutin?`<img class="cutin-art" src="${cutin}" alt="">`:`<img class="cutin-art is-standing" src="${standing}" alt="">`;
- return `<div class="skill-cutin" aria-hidden="true" style="--accent:${character.color}"><div class="cutin-band">${art}<div class="cutin-title"><small>SKILL</small><b>${skillName}</b><span>${name}</span></div></div><i class="cutin-flash"></i></div>`;
+ return `<div class="skill-cutin" aria-hidden="true" style="--accent:${character.color}"><div class="cutin-band">${art}</div><div class="cutin-title"><small>SKILL</small><b>${skillName}</b><span>${name}</span></div><i class="cutin-flash"></i></div>`;
 }

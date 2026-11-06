@@ -41,14 +41,14 @@
 .cutin-band{position:absolute;left:-5%;right:-5%;top:50%;height:min(62%,380px);transform:translateY(-50%) skewY(-6deg);overflow:hidden;background:linear-gradient(100deg,#1d1830 0%,var(--accent) 55%,#fff8 100%);border-block:3px solid #fff;box-shadow:0 18px 50px #1d183055;animation:cutin-band 3s cubic-bezier(.2,.8,.2,1) both;animation-delay:inherit;animation-play-state:inherit}
 .cutin-art{position:absolute;inset:-8% 0;width:100%;height:116%;object-fit:cover;object-position:50% 30%;transform:skewY(6deg);animation:cutin-art 3s ease-out both;animation-delay:inherit;animation-play-state:inherit}
 .cutin-art.is-standing{object-fit:contain;object-position:85% 18%;height:260%;inset:-12% 0 auto}
-.cutin-title{position:absolute;left:12%;bottom:12%;padding:8px 18px;border-radius:6px;background:linear-gradient(90deg,#1d1830b3,#1d183000);transform:skewY(6deg);display:flex;flex-direction:column;align-items:flex-start;color:#fff;text-shadow:0 2px 10px #1d1830cc;animation:cutin-title 3s ease-out both;animation-delay:inherit;animation-play-state:inherit}
+.cutin-title{position:absolute;right:7%;bottom:6%;display:flex;flex-direction:column;align-items:flex-end;text-align:right;color:#fff;text-shadow:0 2px 10px #1d1830cc;animation:cutin-title 3s ease-out both;animation-delay:var(--effect-delay,0ms);animation-play-state:var(--effect-state,running)}
 .cutin-title small{letter-spacing:.3em;font-size:12px;opacity:.85}.cutin-title b{font-size:clamp(24px,4.4vw,44px);line-height:1.15}.cutin-title span{font-size:15px;opacity:.9}
 .cutin-flash{position:absolute;inset:0;background:#fff;opacity:0;animation:cutin-flash 3s linear both;animation-delay:inherit;animation-play-state:inherit}
 .skill-cutin>*{animation-delay:var(--effect-delay,0ms);animation-play-state:var(--effect-state,running)}
 @keyframes cutin-out{0%,36%{opacity:1;visibility:visible}42%,100%{opacity:0;visibility:hidden}}
 @keyframes cutin-band{0%{clip-path:inset(0 100% 0 0)}10%,100%{clip-path:inset(0 0 0 0)}}
 @keyframes cutin-art{0%{transform:skewY(6deg) translateX(-14%) scale(1.08)}12%{transform:skewY(6deg) translateX(0) scale(1.04)}40%{transform:skewY(6deg) translateX(3%) scale(1)}}
-@keyframes cutin-title{0%,8%{opacity:0;transform:skewY(6deg) translateX(-40px)}16%,100%{opacity:1;transform:skewY(6deg) translateX(0)}}
+@keyframes cutin-title{0%,8%{opacity:0;transform:translateX(40px)}16%,100%{opacity:1;transform:translateX(0)}}
 @keyframes cutin-flash{0%,33%{opacity:0}37%{opacity:.85}42%,100%{opacity:0}}
 @media(max-width:600px){.cutin-band{height:46%}.cutin-title span{font-size:12px}}
 @media(prefers-reduced-motion:reduce){.skill-cutin{animation:cutin-out 3s steps(1) both}.cutin-band,.cutin-art,.cutin-title,.cutin-flash{animation:none}.cutin-flash{display:none}}

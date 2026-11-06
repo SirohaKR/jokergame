@@ -28,7 +28,9 @@ test('peek presentation retains viewer privacy even when reflected',()=>{
 test('skill cut-in uses Drive art when present and falls back to standing art, with no card data',async()=>{
  const {skillCutinMarkup}=await import('../frontend/src/skill-presentation.js');
  const {CHARACTERS,cutinPath,imagePath}=await import('../frontend/src/data.js');
- assert.deepEqual(CHARACTERS.map(c=>Boolean(cutinPath(c))),[true,true,true,false]);
+ assert.deepEqual(CHARACTERS.map(c=>Boolean(cutinPath(c))),[true,true,true,true]);
+ assert.equal(cutinPath({id:'unknown'}),null);
+ assert.match(skillCutinMarkup(CHARACTERS[0],{name:'x',skillName:'y',cutin:null,standing:'s.png'}),/is-standing/);
  for(const c of CHARACTERS){
   const html=skillCutinMarkup(c,{name:c.name,skillName:'테스트',cutin:cutinPath(c),standing:imagePath(c)});
   assert.ok(html.includes(cutinPath(c)??imagePath(c)));
