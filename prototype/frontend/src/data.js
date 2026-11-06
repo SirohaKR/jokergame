@@ -6,5 +6,8 @@ export const CHARACTERS=[
  {id:'yuna',assetId:'rosette',name:'로제트',tag:'살롱의 분위기 메이커',color:'#eb9caa',portrait:{size:'400%',x:'50%',y:'9%'},emoteLabels:{laugh:'아하하! 최고!',shock:'에에에?!',hello:'다들 안녕!',think:'너, 딱 걸렸어!'}}
 ];
 export const imagePath=c=>`assets/characters/${c.assetId??c.id}.png`;
+// Skill cut-in art from the shared Drive (스킬 folder). Characters without one fall back to their standing art.
+export const SKILL_CUTINS={serena:'assets/skills/serena.webp',elysia:'assets/skills/elysia.webp',lunea:'assets/skills/lunea.webp'};
+export const cutinPath=c=>SKILL_CUTINS[c.assetId??c.id]??null;
 export function readProfile(){try{const p=JSON.parse(localStorage.getItem('joker-profile-v1'));return {nickname:typeof p?.nickname==='string'?p.nickname.slice(0,16):'플레이어',character:Number.isInteger(p?.character)&&p.character>=0&&p.character<4?p.character:0,sound:p?.sound!==false,sets:Number.isInteger(p?.sets)?p.sets:0};}catch{return {nickname:'플레이어',character:0,sound:true,sets:0};}}
 export function saveProfile(p){try{localStorage.setItem('joker-profile-v1',JSON.stringify(p));return true;}catch{return false;}}

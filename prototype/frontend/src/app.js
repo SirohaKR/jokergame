@@ -1,7 +1,7 @@
-import {skillFeedback,skillEffectMarkup} from './skill-presentation.js';
+import {skillFeedback,skillEffectMarkup,skillCutinMarkup} from './skill-presentation.js';
 import {EMOTES,EMOTE_DURATION,canSendEmote,privateDrawCue,emoteSprite,emoteLabel} from './emotes.js';
 import {createGame,dispatch,nextActive,pairs,label,POINTS,SKILLS,skillUnavailable,botSkillAction,viewFor} from './game.js';
-import {CHARACTERS,imagePath,readProfile,saveProfile} from './data.js';
+import {CHARACTERS,imagePath,cutinPath,readProfile,saveProfile} from './data.js';
 const app=document.querySelector('#app');
 let profile=readProfile(),screen='home',game=null,deadline=0,job=null,paused=false,pauseRemaining=0,modal=null,selectedCharacter=profile.character,emoteOpen=false,emoteUntil=0,lastEmote=null,emoteText='',dragged=null,scored=false;
 let audioCtx,sortMode=false,sortCard=null,skillTarget=1,skillRemaining=0,skillResumeActor=null,animationUntil=0;
@@ -32,7 +32,7 @@ function revealStage(){const d=game.draw,joker=d.card.rank===0;return `<div clas
 function skillStage(){
  const event=viewFor(game,0).skill,skill=SKILLS[event.kind],feedback=skillFeedback(event);
  const elapsed=Math.max(0,Math.min(3000,3000-(paused?pauseRemaining:animationUntil-Date.now())));
- return `<div class="skill-stage skill-${feedback.type}" role="status" style="--effect-delay:-${elapsed}ms;--effect-state:${paused?'paused':'running'};--accent:${character(event.actor).color}"><span class="eyebrow">${event.reflected?'SKILL REFLECTED':'ONCE PER SET'}</span><div class="skill-portrait">${skillEffectMarkup(event)}<img src="${imagePath(character(event.actor))}" alt="${esc(seatName(event.actor))}"></div><h2>${skill.name}</h2><p class="skill-quote">“${feedback.quote}”</p><p>${esc(seatName(event.actor))}${event.target===null?'의 스킬':` → ${esc(seatName(event.target))}`}</p><p class="skill-result">${feedback.result}</p>${event.card?`<div class="skill-private"><small>${feedback.privateLabel}</small><strong>${event.card.suit} ${label(event.card)}</strong></div>`:''}<small>연출 중에는 행동 시간이 흐르지 않아요.</small></div>`;
+ return `<div class="skill-stage skill-${feedback.type}" role="status" style="--effect-delay:-${elapsed}ms;--effect-state:${paused?'paused':'running'};--accent:${character(event.actor).color}">${skillCutinMarkup(character(event.actor),{name:esc(seatName(event.actor)),skillName:skill.name,cutin:cutinPath(character(event.actor)),standing:imagePath(character(event.actor))})}<span class="eyebrow">${event.reflected?'SKILL REFLECTED':'ONCE PER SET'}</span><div class="skill-portrait">${skillEffectMarkup(event)}<img src="${imagePath(character(event.actor))}" alt="${esc(seatName(event.actor))}"></div><h2>${skill.name}</h2><p class="skill-quote">“${feedback.quote}”</p><p>${esc(seatName(event.actor))}${event.target===null?'의 스킬':` → ${esc(seatName(event.target))}`}</p><p class="skill-result">${feedback.result}</p>${event.card?`<div class="skill-private"><small>${feedback.privateLabel}</small><strong>${event.card.suit} ${label(event.card)}</strong></div>`:''}<small>연출 중에는 행동 시간이 흐르지 않아요.</small></div>`;
 }
 function skillDialog(){
  const kind=game.players[0].character,skill=SKILLS[kind],targets=game.players.filter(p=>p.id!==0&&p.hand.length);

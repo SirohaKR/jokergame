@@ -18,3 +18,17 @@
 - `output/character-assets/transparent-characters.zip`: 게임에 적용한 투명 PNG 4장과 manifest.
 
 피부톤·얼굴·눈·머리·의상·체형·포즈를 임의로 수정하지 않는다. 이모티콘과 게임 코드는 이번 교체에서 변경하지 않았다.
+
+## 스킬 컷인
+
+2026-11-06: 스킬 발동 3초 연출의 처음 약 1.2초에 캐릭터 컷인이 기울어진 띠로 들어왔다가 플래시와 함께 사라지고, 기존 카드 이펙트가 이어진다. 일시정지 시 다른 스킬 이펙트와 같이 멈춘다. 카드 정보는 컷인에 표시하지 않는다.
+
+| 캐릭터 | 게임 파일 | 원본 (드라이브 `조커게임/1차작업/스킬`) |
+| --- | --- | --- |
+| 세레나 | `prototype/frontend/assets/skills/serena.webp` | `serena-skill.png` 1888×1056 |
+| 엘리시아 | `prototype/frontend/assets/skills/elysia.webp` | `elysia-skill.png` 1888×1056 |
+| 루네아 | `prototype/frontend/assets/skills/lunea.webp` | `lunea-skill.png` 1280×720 |
+| 로제트 | 없음 → 스탠딩으로 대체 | 드라이브에 아직 없음 |
+
+- 1280px 너비 WebP(품질 86)로 줄여 저장했다. 다른 보정은 하지 않았다.
+- 로제트 컷인을 만들면 `assets/skills/rosette.webp`로 넣고 `data.js`의 `SKILL_CUTINS`에 한 줄 추가하면 된다.
