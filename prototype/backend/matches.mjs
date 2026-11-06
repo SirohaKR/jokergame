@@ -1,6 +1,7 @@
 // In-memory authoritative match service. HTTP authentication/transport is a separate layer.
 import {randomBytes, randomInt, randomUUID} from 'node:crypto';
 import {createGame, dispatch, nextActive, viewFor} from '../frontend/src/game.js';
+import {SKILL_STAGE_MS} from '../frontend/src/skill-presentation.js';
 
 export class MatchError extends Error {
   constructor(code, message) { super(message); this.code=code; }
@@ -23,7 +24,7 @@ export function createMatchService({now=Date.now, seed=()=>randomInt(0,0x7ffffff
     if(!input||typeof input.nickname!=='string'||!input.nickname.trim()||input.nickname.trim().length>16||!characterIds.includes(input.characterId))fail('INVALID_INPUT','닉네임과 캐릭터를 확인하세요.');
     return {nickname:input.nickname.trim(),characterId:input.characterId,token:randomBytes(32).toString('hex')};
   }
-  function deadline(match) {match.deadline=match.game.phase==='ended'?null:now()+(['reveal','skill'].includes(match.game.phase)?3000:20000);}
+  function deadline(match) {match.deadline=match.game.phase==='ended'?null:now()+(match.game.phase==='skill'?SKILL_STAGE_MS:match.game.phase==='reveal'?3000:20000);}
   function apply(match,action) {
     const previousActor=match.game.actor;
     const remaining=action.type==='USE_SKILL'?Math.max(1,match.deadline-now()):null;
