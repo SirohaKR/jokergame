@@ -1,3 +1,5 @@
+// Skill stage timing: character cut-in first, then the 3s card effect.
+export const SKILL_CUTIN_MS=2400,SKILL_EFFECT_MS=3000,SKILL_STAGE_MS=SKILL_CUTIN_MS+SKILL_EFFECT_MS;
 // Presentation takes only the player-filtered skill event, never the full hand state.
 export const SKILL_PRESENTATIONS=[
  {type:'gift',quote:'선물이야. 반품은 사절.',result:'일반 카드 한 장을 전달했습니다. 생긴 페어는 자동으로 정리됩니다.'},
