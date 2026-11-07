@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {createMatchService} from '../backend/matches.mjs';
+import {SKILL_STAGE_MS} from '../frontend/src/skill-presentation.js';
 const profile={nickname:'플레이어',characterId:'seoha'};
 function setup() {
  let time=1000;
@@ -85,10 +86,10 @@ test('skill animation preserves remaining deadline, locks commands and cannot be
  const {service,id,clients,advance}=setup();service.start(id,clients[0].token);
  let s=service.snapshot(id,clients[0].token);advance(7000);
  service.command(id,clients[0].token,{commandId:'skill',expectedRevision:s.revision,action:{type:'USE_SKILL',target:1,cardId:s.players[0].hand.find(c=>c.rank!==0).id}});
- s=service.snapshot(id,clients[0].token);assert.equal(s.phase,'skill');assert.equal(s.phaseDeadline,11000);
+ s=service.snapshot(id,clients[0].token);assert.equal(s.phase,'skill');assert.equal(s.phaseDeadline,8000+SKILL_STAGE_MS);
  assert.equal(service.snapshot(id,clients[2].token).skill.card,null);
  assert.throws(()=>service.command(id,clients[0].token,{commandId:'skip',expectedRevision:s.revision,action:{type:'END_SKILL'}}),code('INVALID_INPUT'));
  assert.throws(()=>service.command(id,clients[0].token,{commandId:'draw',expectedRevision:s.revision,action:{type:'BEGIN_DRAW'}}),code('INVALID_ACTION'));
- advance(3000);service.tick();s=service.snapshot(id,clients[0].token);
- assert.equal(s.phase,'action');assert.equal(s.phaseDeadline,24000);assert.equal(s.skillUsed[0],true);
+ advance(SKILL_STAGE_MS);service.tick();s=service.snapshot(id,clients[0].token);
+ assert.equal(s.phase,'action');assert.equal(s.phaseDeadline,21000+SKILL_STAGE_MS);assert.equal(s.skillUsed[0],true);
 });

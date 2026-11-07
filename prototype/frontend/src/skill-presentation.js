@@ -1,3 +1,5 @@
+// Skill stage timing: character cut-in first, then the 3s card effect.
+export const SKILL_CUTIN_MS=2400,SKILL_EFFECT_MS=3000,SKILL_STAGE_MS=SKILL_CUTIN_MS+SKILL_EFFECT_MS;
 // Presentation takes only the player-filtered skill event, never the full hand state.
 export const SKILL_PRESENTATIONS=[
  {type:'gift',quote:'선물이야. 반품은 사절.',result:'일반 카드 한 장을 전달했습니다. 생긴 페어는 자동으로 정리됩니다.'},
@@ -14,4 +16,9 @@ export function skillEffectMarkup(event){
  const type=SKILL_PRESENTATIONS[event.kind].type;
  const n=event.kind===3?8:event.kind===1?3:1;
  return `<div class="skill-effect effect-${type}${event.reflected?' is-reflected':''}" aria-hidden="true"><i class="skill-ring ring-one"></i><i class="skill-ring ring-two"></i>${Array.from({length:n},(_,i)=>`<span class="effect-card" style="--card-index:${i};--card-angle:${i*45}deg"><i></i></span>`).join('')}</div>`;
+}
+// Full-width character cut-in shown at the start of every skill. Purely decorative: no card data.
+export function skillCutinMarkup(character,{name,skillName,cutin,standing}){
+ const art=cutin?`<img class="cutin-art" src="${cutin}" alt="">`:`<img class="cutin-art is-standing" src="${standing}" alt="">`;
+ return `<div class="skill-cutin" aria-hidden="true" style="--accent:${character.color}"><div class="cutin-band">${art}</div><div class="cutin-title"><small>SKILL</small><b>${skillName}</b><span>${name}</span></div><i class="cutin-flash"></i></div>`;
 }
