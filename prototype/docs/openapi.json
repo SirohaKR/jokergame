@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.3",
   "info": {
-    "title": "한 장의 비밀 API 설계",
+    "title": "라스트 원 API 설계",
     "version": "0.1.0",
     "description": "로컬 AI 프로토타입의 후속 온라인 서버 계약. /api/health 외 미구현. 게임 행동/이모티콘은 별도 WebSocket 이벤트 명세 참조. 인증 방식은 서버 세션 쿠키+CSRF 토큰을 설계 기준으로 하되 로그인 공급자는 미정."
   },
