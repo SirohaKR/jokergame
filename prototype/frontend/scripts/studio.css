@@ -1,0 +1,43 @@
+:root{font-family:Inter,'Malgun Gothic',sans-serif;color:#dedee9;background:#15151d;font-size:13px;color-scheme:dark}*{box-sizing:border-box}body{margin:0}
+button,input,select,textarea{font:inherit}button,.button{cursor:pointer;border:1px solid #3c3c4e;border-radius:7px;padding:8px 11px;background:#292936;color:#eee;white-space:nowrap}button:hover,.button:hover{background:#393949;border-color:#8e7ebc}button.small{padding:4px 8px;font-size:12px}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,.button:focus-within{outline:2px solid #bba0ff;outline-offset:2px}
+input,select,textarea{min-width:0;width:100%;background:#20202c;border:1px solid #3b3b4c;border-radius:6px;color:#eee;padding:8px}textarea{resize:vertical;line-height:1.5}
+.primary{background:#aa8ad7;color:#17121e;border-color:#aa8ad7;font-weight:bold}.primary:hover{background:#bc9fe6;color:#17121e}
+.muted{color:#9793a9}
+.top{min-height:72px;display:flex;flex-wrap:wrap;align-items:center;gap:16px;padding:12px 20px;border-bottom:1px solid #333341;background:#1c1c27}
+.brand{display:flex;gap:10px;align-items:center;color:#d7bcff;text-decoration:none;font-size:27px;white-space:nowrap}.brand span{font-size:14px;letter-spacing:2px}.brand small{display:block;font-size:9px;color:#9793a9;margin-top:4px}
+.top>input{width:240px;background:transparent;border-color:transparent;font-weight:bold}.top>input:hover{border-color:#3b3b4c}
+#save-status{font-size:11px;color:#aaa1ba}#save-status.error{color:#ff9f9f}#save-status.ok{color:#a9e3b8}
+.actions{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap}
+.workspace{display:grid;grid-template-columns:220px minmax(420px,1fr) 340px;height:calc(100dvh - 72px)}
+.characters{border-right:1px solid #333341;padding:14px 10px;display:flex;flex-direction:column;gap:6px;overflow:auto;background:#191922}
+.char-tab{display:flex;align-items:center;gap:10px;text-align:left;padding:8px;background:transparent;border-color:transparent}.char-tab.active{background:#2a2638;border-color:var(--accent)}
+.char-tab .emote-sprite{width:48px}.char-tab b{display:block;font-size:14px}.char-tab small{color:#9793a9;font-size:11px}
+.progress{height:4px;border-radius:2px;background:#33334a;margin-top:5px;overflow:hidden}.progress i{display:block;height:100%;background:var(--accent)}
+.editor{overflow:auto;padding:18px 26px 60px}
+.editor h1{font-size:20px;margin:0 0 4px;color:#f2eaff}.editor h1 small{font-size:12px;color:#9793a9;margin-left:8px;font-weight:normal}
+.editor h2{font-size:13px;letter-spacing:1px;color:#c9b6ea;margin:26px 0 8px;padding-bottom:6px;border-bottom:1px solid #2e2e3c}
+.legend{display:flex;gap:12px;flex-wrap:wrap;color:#9793a9;font-size:11px;margin-bottom:6px}
+.slot{display:grid;grid-template-columns:150px 1fr;gap:4px 14px;padding:10px;border-radius:8px;border:1px solid transparent}.slot.focus{background:#1f1d2b;border-color:#3d3654}
+.slot-label b{display:block;font-size:13px;color:#eee}.slot-label small{display:block;color:#8d89a0;font-size:11px;margin-top:2px}
+.badge{display:inline-block;margin-top:5px;font-size:10px;padding:2px 6px;border-radius:9px;border:1px solid}.badge-own{color:#a9e3b8;border-color:#4e7c5b}.badge-common{color:#f0d391;border-color:#7c6a3e}.badge-plan{color:#a8a3be;border-color:#4a4760}
+.count{grid-column:2;justify-self:end;font-size:11px;color:#77738a}.count.warn{color:#f0c27b}
+.extra-row{display:grid;grid-template-columns:130px 1fr 92px 30px;gap:6px;margin-bottom:6px;align-items:start}.extra-row .memo{grid-column:1/-2}
+.extra-row button{padding:6px;color:#ff9f9f}
+.side{border-left:1px solid #333341;display:flex;flex-direction:column;overflow:auto;background:#191922}
+.side header{display:flex;justify-content:space-between;align-items:center;padding:12px 14px 8px}.side header small{color:#9793a9;font-size:11px}
+.stage{position:relative;margin:0 14px;height:400px;border-radius:12px;overflow:hidden;background:radial-gradient(circle at 50% 30%,color-mix(in srgb,var(--accent) 45%,transparent),transparent 65%),linear-gradient(#26203a,#15131f)}
+.stage .standing{position:absolute;top:0;left:50%;transform:translateX(-50%);height:175%;object-fit:contain;pointer-events:none}
+.bubble{position:absolute;bottom:18px;left:14px;right:14px;display:flex;align-items:center;gap:8px;background:#fffcf2;color:#3a3046;border:2px solid var(--accent);border-radius:18px;padding:8px 14px;font-size:15px;font-weight:bold;line-height:1.4;box-shadow:0 8px 20px #0006;animation:pop .3s ease-out}
+.bubble .emote-sprite{width:56px}.bubble.empty{color:#a59bb0;font-weight:normal}
+.cutin{position:absolute;inset:auto 0 30% 0;height:42%;background:linear-gradient(100deg,color-mix(in srgb,var(--accent) 70%,#000) 0 60%,#0000);transform:skewY(-6deg);overflow:hidden;animation:slide .4s ease-out}
+.cutin img{position:absolute;right:-6%;top:-20%;height:160%;transform:skewY(6deg)}
+.cutin-title{position:absolute;left:16px;bottom:16%;transform:skewY(-6deg);color:white;text-shadow:0 2px 6px #000a;max-width:70%}.cutin-title small{display:block;letter-spacing:3px;font-size:10px;opacity:.8}.cutin-title b{display:block;font-size:20px}.cutin-title p{margin:6px 0 0;font-size:14px;font-weight:bold}
+.emote-sprite{display:block;aspect-ratio:1;background-image:var(--emote-image);background-size:200% 200%;background-position:var(--emote-x) var(--emote-y);background-repeat:no-repeat;flex-shrink:0}
+.archive{flex:1}.archive p{margin:0 14px 6px;font-size:12px}#archive-status.error{color:#ff9f9f}
+.archive ul{list-style:none;margin:0;padding:0 14px 20px;display:flex;flex-direction:column;gap:6px}
+.archive li{border:1px solid #333341;border-radius:8px;padding:9px 10px;background:#1f1f2a}.archive li b{display:block;font-size:13px}.archive li small{color:#9793a9;font-size:11px}.archive li div{display:flex;gap:6px;margin-top:6px}
+.archive a{color:#d7bcff;font-size:12px;text-decoration:none;border:1px solid #3c3c4e;border-radius:6px;padding:4px 8px}
+@keyframes pop{from{transform:scale(.92);opacity:0}}@keyframes slide{from{transform:skewY(-6deg) translateX(-30%);opacity:0}}
+@media(max-width:1100px){.workspace{grid-template-columns:1fr;height:auto}.characters{flex-direction:row;border-right:0;border-bottom:1px solid #333341}.side{border-left:0}.slot{grid-template-columns:1fr}.count{grid-column:1}}
+@media(prefers-reduced-motion:reduce){.bubble,.cutin{animation:none}}

@@ -1,0 +1,9 @@
+<!doctype html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>라스트 원 · 대사 스튜디오</title><link rel="stylesheet" href="scripts/studio.css"></head><body>
+<header class="top"><a href="/" class="brand">♧ <span>LAST ONE <small>SCRIPT STUDIO</small></span></a><input id="script-title" aria-label="대본 제목" placeholder="대본 제목을 입력하세요" maxlength="100"><span id="save-status" role="status">이 브라우저에 자동 저장됩니다</span>
+<div class="actions"><button id="reset" title="게임 기본 대사로 새로 시작">새 대본</button><label class="button" title="JSON 대본 불러오기">불러오기<input id="import" type="file" accept="application/json,.json" hidden></label><button id="export-json">JSON 저장</button><button id="export-md">대본 문서(.md)</button><button id="save" class="primary">대본에 저장</button></div></header>
+<main class="workspace">
+<nav id="characters" class="characters" aria-label="캐릭터"></nav>
+<section id="editor" class="editor" aria-label="대사 작성"></section>
+<aside class="side"><section class="preview" aria-label="미리보기"><header><b>미리보기</b><small id="preview-label"></small></header><div id="stage" class="stage"></div></section>
+<section class="archive" aria-label="저장한 대본"><header><b>저장한 대본</b><button id="refresh" class="small">새로고침</button></header><p id="archive-status" class="muted"></p><ul id="archive"></ul></section></aside>
+</main><script type="module" src="scripts/studio.js"></script></body></html>
