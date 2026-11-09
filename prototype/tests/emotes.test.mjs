@@ -23,5 +23,5 @@ test('new character artwork and captions keep legacy selections compatible',asyn
  assert.deepEqual(CHARACTERS.map(c=>c.id),['seoha','orca','haru','yuna']);
  assert.deepEqual(CHARACTERS.map(c=>c.assetId),['serena','elysia','lunea','rosette']);
  for(const e of EMOTES)assert.equal(new Set(CHARACTERS.map(c=>emoteLabel(c,e.id))).size,4);
- for(const c of CHARACTERS){assert.equal(imagePath(c),`assets/characters/${c.assetId}.png`);assert.ok(emoteSprite(c,'laugh').includes(`assets/emotes/${c.assetId}.png`));}
+ for(const c of CHARACTERS){assert.equal(imagePath(c),`assets/lobby/${c.assetId}.png`);assert.ok(emoteSprite(c,'laugh').includes(`assets/emotes/${c.assetId}.png`));}
 });

@@ -3,7 +3,8 @@ export const VERSION=1;
 export const SCENES={home:'메인 로비',room:'대기실',game:'게임 테이블'};
 export const CHARACTERS=[['serena','세레나'],['elysia','엘리시아'],['lunea','루네아'],['rosette','로제트']];
 export const ASSETS=CHARACTERS.flatMap(([id,name])=>[
- {src:`assets/characters/${id}.png`,name:`${name} 스탠딩`,kind:'character'},
+ {src:`assets/lobby/${id}.png`,name:`${name} 일러스트`,kind:'character'},
+ {src:`assets/characters/${id}.png`,name:`${name} 이전 스탠딩`,kind:'character'},
  {src:`assets/skills/${id}.webp`,name:`${name} 스킬 컷인`,kind:'image'},
  {src:`assets/emotes/${id}.png`,name:`${name} 이모티콘 시트`,kind:'image'}]);
 export const uid=()=>globalThis.crypto.randomUUID();
@@ -26,7 +27,7 @@ export function sceneTemplate(key){
   add('text',{x:210,y:22,w:600,h:52,text:'AI 대전 · 1세트 · 턴 20초',role:'room-rules'});
   CHARACTERS.forEach(([id,name],i)=>{
    add('panel',{name:`${name} 좌석`,x:32+i*312,y:105,w:280,h:480,background:'#352e48',role:`seat-${i}`});
-   add('character',{name,x:42+i*312,y:130,w:260,h:390,src:`assets/characters/${id}.png`,fit:'cover',role:`standing-${i}`});
+   add('character',{name,x:42+i*312,y:130,w:260,h:390,src:`assets/lobby/${id}.png`,fit:'cover',role:`standing-${i}`});
    add('panel',{name:`${name} 이름표`,x:42+i*312,y:510,w:260,h:64,text:`${i===0?'나':'AI'} · ${name}`,fontSize:20,role:`name-${i}`});
   });
   add('button',{x:32,y:628,w:320,h:60,text:'이모티콘  ♡  !  ?',role:'emotes'});
