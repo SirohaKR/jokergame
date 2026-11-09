@@ -1,5 +1,5 @@
 /* Main lobby (home): full-screen game menu. Partner stands center-left, menu tiles on the right. */
-.main-lobby{position:relative;min-height:100vh;min-height:100dvh;overflow-x:hidden;display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,380px);grid-template-rows:auto 1fr auto;grid-template-areas:"top top" "stage menu" "dock dock";gap:0 4vw;padding:20px 4vw 22px;box-sizing:border-box;color:#f6f2fb;background:#1e1a2e}
+.main-lobby{position:relative;height:100vh;height:100dvh;min-height:560px;overflow-x:hidden;display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,380px);grid-template-rows:auto 1fr auto;grid-template-areas:"top top" "stage menu" "dock dock";gap:0 4vw;padding:20px 4vw 22px;box-sizing:border-box;color:#f6f2fb;background:#1e1a2e}
 .lobby-bg{position:absolute;inset:0;z-index:0;overflow:hidden;background:radial-gradient(ellipse 70% 80% at 32% 55%,color-mix(in srgb,var(--accent) 45%,#2c2645) 0%,#231e36 55%,#17142a 100%)}
 .lobby-glow{position:absolute;left:8%;bottom:-20%;width:56vw;height:56vw;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--accent) 60%,transparent),transparent 65%);opacity:.55;filter:blur(10px)}
 .lobby-moon{position:absolute;left:12%;top:10%;width:120px;height:120px;border-radius:50%;box-shadow:-18px 10px 0 0 #f4e9c8;opacity:.35}
@@ -17,8 +17,8 @@
 .lobby-stat{display:flex;flex-direction:column;align-items:center;padding-left:10px;border-left:1px solid #ffffff26;font-size:10px;opacity:.9}.lobby-stat b{font-size:16px}
 .lobby-icon{width:42px;height:42px;border-radius:50%;background:#ffffff14;border:1px solid #ffffff26;color:#fff;font-size:18px}
 
-.lobby-stage{grid-area:stage;position:relative;min-height:0;display:flex;align-items:flex-end;justify-content:center}
-.lobby-standing{height:min(78vh,820px);max-width:100%;object-fit:contain;object-position:bottom;filter:drop-shadow(0 18px 40px #0007);animation:lobby-enter .5s ease-out both,lobby-breathe 5s ease-in-out .5s infinite}
+.lobby-stage{grid-area:stage;position:relative;min-height:0;height:100%;display:flex;align-items:flex-end;justify-content:center}
+.lobby-standing{height:100%;max-height:820px;max-width:100%;object-fit:contain;object-position:bottom;filter:drop-shadow(0 18px 40px #0007);animation:lobby-enter .5s ease-out both,lobby-breathe 5s ease-in-out .5s infinite}
 .lobby-bubble{position:absolute;top:12%;left:calc(50% + 120px);padding:12px 18px;border-radius:18px 18px 18px 4px;background:#fffdf8;color:#3a3150;font-size:16px;font-weight:700;box-shadow:0 8px 24px #0005;white-space:nowrap;animation:lobby-pop .4s .35s ease-out both}
 .lobby-nameplate{position:absolute;left:4%;bottom:12%;display:flex;flex-direction:column;padding:12px 22px 12px 16px;border-left:4px solid var(--accent);background:linear-gradient(90deg,#17142acc,#17142a00)}
 .lobby-nameplate small{font-size:10px;letter-spacing:.35em;opacity:.7}.lobby-nameplate strong{font-size:38px;line-height:1.1}.lobby-nameplate span{font-size:14px;opacity:.85}
@@ -68,7 +68,7 @@
 .room-seats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;min-height:0}
 .seat{position:relative;display:flex;flex-direction:column;justify-content:flex-end;min-height:420px;border-radius:16px;overflow:hidden;border:1px solid #ffffff26;background:linear-gradient(180deg,color-mix(in srgb,var(--accent) 30%,transparent),#17142aee 92%);animation:seat-in .45s calc(var(--i)*90ms) ease-out both}
 .seat.is-me{border:2px solid var(--accent);box-shadow:0 0 28px color-mix(in srgb,var(--accent) 55%,transparent)}
-.seat-standing{position:absolute;inset:8% 0 0;width:100%;height:92%;object-fit:contain;object-position:bottom;filter:drop-shadow(0 10px 24px #0007)}
+.seat-standing{position:absolute;inset:44px 0 0;width:100%;height:calc(100% - 44px);object-fit:cover;object-position:50% 6%;filter:drop-shadow(0 10px 24px #0007)}
 .seat-badge{position:absolute;top:12px;left:12px;z-index:2;padding:4px 12px;border-radius:999px;background:#17142acc;border:1px solid #ffffff40;font-size:12px}
 .seat.is-me .seat-badge{background:var(--accent);color:#1e1a2e;font-weight:700;border-color:transparent}
 .seat-change{position:absolute;left:50%;bottom:118px;z-index:2;transform:translateX(-50%);padding:8px 18px;border-radius:999px;border:1px solid #fff8;background:#17142acc;color:#fff;font-size:13px;font-weight:700;white-space:nowrap;cursor:pointer}
@@ -109,10 +109,10 @@
 @keyframes lobby-pop{from{opacity:0;transform:scale(.8) translateY(8px)}to{opacity:1;transform:none}}
 
 @media(max-width:860px){
- .main-lobby{grid-template-columns:1fr;grid-template-rows:auto minmax(0,1fr) auto auto;grid-template-areas:"top" "stage" "menu" "dock";padding:14px 16px 16px;gap:10px}
+ .main-lobby{height:auto;min-height:100vh;min-height:100dvh;grid-template-columns:1fr;grid-template-rows:auto minmax(0,1fr) auto auto;grid-template-areas:"top" "stage" "menu" "dock";padding:14px 16px 16px;gap:10px}
  .lobby-logo small,.lobby-stat{display:none}.lobby-logo b{font-size:17px}.lobby-logo>span{font-size:26px}
  .lobby-profile input{width:84px;font-size:13px}
- .lobby-standing{height:min(46vh,440px)}
+ .lobby-standing{height:min(46vh,440px)}.lobby-stage{height:auto}
  .lobby-bubble{top:6%;left:auto;right:4%;font-size:13px}
  .lobby-nameplate{bottom:4%;padding:8px 14px}.lobby-nameplate strong{font-size:26px}.lobby-nameplate span{font-size:12px}
  .battle-button{min-height:84px}.battle-button b{font-size:28px}.lobby-menu.open .battle-button{min-height:64px}.lobby-menu.open .battle-button b{font-size:22px}
