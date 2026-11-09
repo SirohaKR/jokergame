@@ -3,7 +3,7 @@ export const SKILL_CUTIN_MS=2400,SKILL_EFFECT_MS=3000,SKILL_STAGE_MS=SKILL_CUTIN
 // Presentation takes only the player-filtered skill event, never the full hand state.
 export const SKILL_PRESENTATIONS=[
  {type:'gift',quote:'선물이야. 반품은 사절.',result:'일반 카드 한 장을 전달했습니다. 생긴 페어는 자동으로 정리됩니다.'},
- {type:'peek',quote:'운명의 장막을… 전부 읽어볼게요!',result:'현재 손패 전체를 확인했습니다. 확인한 카드는 상대 손에 남아 있는 동안 계속 보입니다. 새 카드는 숨겨지며 전체 재분배 시 해제됩니다.'},
+ {type:'peek',quote:'힉…! 시, 실례할게요…!',result:'현재 손패 전체를 확인했습니다. 확인한 카드는 상대 손에 남아 있는 동안 계속 보입니다. 새 카드는 숨겨지며 전체 재분배 시 해제됩니다.'},
  {type:'reflect',quote:'음… 이건 돌려줄게.',result:'다음 내 차례 전까지 나를 향한 첫 전달·열람 스킬을 반사합니다.'},
  {type:'redeal',quote:'잠깐! 이 분위기, 싹 바꾸자!',result:'남은 사람들의 패를 다시 나누고 페어를 정리했습니다.'}
 ];
