@@ -108,3 +108,10 @@ Node 테스트는 1,000개 시드의 게임 종료/카드 보존, 종료 우선�
 - `/ui-plans.html`: 제목·날짜·와이어프레임 목록, `?id=UUID`는 세 화면·메모·요소 배치 상세. 편집기로 다시 열어 새 버전을 저장할 수 있다.
 - `GET /api/ui-plans`는 메타데이터, `GET /api/ui-plans/:id`는 원본, `/:id/project.json`은 편집용 JSON, `/:id/{home,room,game}.svg`는 좌표에 맞춘 와이어프레임을 제공한다. SVG는 문자를 이스케이프하고 그림을 이름이 붙은 상자로 치환한다.
 - 서버 파일 저장이 성공한 뒤에만 완료 안내와 상세 링크를 표시한다. 실패하면 초안을 유지하고 재시도할 수 있다. 저장 경로는 `UI_PLANS_DIR`로 지정 가능하며 Compose는 쓰기 가능한 영속 볼륨을 사용한다. 현재 로컬 개발 도구이며 계정별 접근 제어와 GitHub 자동 업로드는 제공하지 않는다.
+
+## 대사 스튜디오 (2026-11-09)
+
+- `/scripts.html` + `frontend/scripts/`: `model.js`(대사 칸 정의 `GROUPS`/`SLOTS`, 기본값, v1 검증, Markdown 변환), `studio.js`(편집 UI·미리보기·localStorage 초안·JSON/MD 내보내기), `studio.css`. 외부 의존성 없음.
+- 기본값은 `data.js`의 `emoteLabels`, `skill-presentation.js`의 `quote`, `docs/CHARACTERS.md` 대사에서 가져온다. 칸의 `game` 값(`own`/`common`/`plan`)은 현재 게임 연결 상태를 표시한다. 뽑기 반응은 지금 `app.js` `revealStage`에 공통 문구로 하드코딩되어 있다.
+- `backend/scripts-api.mjs`: `POST /api/scripts`(제목 필수, 같은 id 재시도는 중복 생성 없음), `GET /api/scripts`(메타데이터), `GET /api/scripts/:id`, `/:id/script.json`, `/:id/script.md`. UI 기획 보관함과 같은 원자적 저장 방식. 저장 경로 `SCRIPTS_DIR`, Compose는 `/app/data/scripts`.
+- 게임에 연결할 때는 저장된 JSON의 `characters.<assetId>.lines.<slot>`을 읽으면 된다.
