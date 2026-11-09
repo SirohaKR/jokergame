@@ -31,7 +31,7 @@ export function nextActive(state, seat) {
 }
 export function createGame(seed=Date.now(), characters=[0,1,2,3]) {
   const random=seededRandom(seed),deck=shuffle(makeDeck(),random);
-  const state={seed,players:characters.map((character,id)=>({id,character,hand:[]})),discarded:[],order:[],actor:seed%4,phase:'action',selected:null,draw:null,turn:1,revision:0,skillUsed:[false,false,false,false],shields:[false,false,false,false],skill:null};
+  const state={seed,players:characters.map((character,id)=>({id,character,hand:[]})),discarded:[],order:[],actor:seed%4,phase:'action',selected:null,draw:null,turn:1,revision:0,skillUsed:[false,false,false,false],shields:[false,false,false,false],skill:null,knownHands:[]};
   deck.forEach((c,i)=>state.players[i%4].hand.push(c));
   state.players.forEach((p,i)=>pairs(p.hand).forEach(pair=>removePair(state,i,pair)));
   // Rare opening ties: clockwise from the starting seat (documented provisional rule).
@@ -45,8 +45,8 @@ function advance(state) {
   state.actor=nextActive(state,state.actor);if(state.shields)state.shields[state.actor]=false;state.phase='action';state.selected=null;state.draw=null;state.turn++;
 }
 export const SKILLS = [
- {id:'gift',name:'이건 네 거♡',description:'조커를 제외한 내 카드 한 장을 상대에게 넘깁니다. 생긴 페어는 자동 제거됩니다.'},
- {id:'peek',name:'금지된 한 페이지',description:'상대 카드 한 장을 나만 확인하고 그 손패를 섞습니다.'},
+ {id:'gift',name:'이건 네 거♡',description:'조커를 제외한 내 카드 한 장을 상대에게 넘깁니다. 손패가 2장 이상일 때만 사용하며 생긴 페어는 자동 제거됩니다.'},
+ {id:'peek',name:'금지된 한 페이지',description:'한 명의 현재 손패 전체를 나만 확인합니다. 그 상대에게 남은 확인 카드는 계속 보이고, 새로 들어온 카드는 보이지 않습니다. 전체 재분배 시 해제됩니다.'},
  {id:'reflect',name:'반송할게…',description:'다음 내 차례 전까지 나를 향한 첫 스킬을 되돌립니다.'},
  {id:'redeal',name:'자, 판 다시 짜자!',description:'내 손패가 최다일 때 남은 모든 패를 다시 나눕니다. 공동 최다도 사용 가능합니다.'}
 ];
@@ -55,6 +55,7 @@ export function skillUnavailable(state,seat=state.actor) {
  if(state.skillUsed?.[seat])return '이번 세트에서 이미 사용했어요.';
  const kind=state.players[seat].character;
  if(!SKILLS[kind])return '알 수 없는 캐릭터입니다.';
+ if(kind===0&&state.players[seat].hand.length===1)return '손패가 1장일 때는 넘길 수 없어요.';
  if(kind===0&&!state.players[seat].hand.some(c=>c.rank!==0))return '조커는 넘길 수 없어요.';
  if(kind===3&&state.players.some(p=>p.hand.length>state.players[seat].hand.length))return '손패가 가장 많을 때만 사용할 수 있어요.';
  return null;
@@ -67,7 +68,6 @@ function useSkill(s,action) {
  }
  let chosen;
  if(kind===0){chosen=s.players[actor].hand.find(c=>c.id===action.cardId);if(!chosen||chosen.rank===0)throw new Error('넘길 일반 카드를 선택하세요.');}
- if(kind===1&&(!Number.isInteger(action.index)||!s.players[target].hand[action.index]))throw new Error('확인할 카드를 선택하세요.');
  s.skillUsed??=[false,false,false,false];s.shields??=[false,false,false,false];
  s.skillUsed[actor]=true;
  const reflected=(kind===0||kind===1)&&s.shields[target];
@@ -82,11 +82,13 @@ function useSkill(s,action) {
   event.privateViews=[{seat:actor,card:{rank:chosen.rank,suit:chosen.suit}},{seat:target,card:{rank:chosen.rank,suit:chosen.suit}}];
  }else if(kind===1){
   const subject=reflected?actor:target,viewer=reflected?target:actor;
-  const hand=s.players[subject].hand,index=reflected?Math.floor(random()*hand.length):action.index;
-  event.privateViews=[{seat:viewer,card:{rank:hand[index].rank,suit:hand[index].suit}}];
-  s.players[subject].hand=shuffle(hand,random);
+  const hand=s.players[subject].hand;
+  event.privateViews=[{seat:viewer,cards:hand.map(({rank,suit})=>({rank,suit}))}];
+  s.knownHands??=[];
+  s.knownHands.push({viewer,subject,ids:hand.map(c=>c.id)});
  }else if(kind===2){s.shields[actor]=true;}
  else if(kind===3){
+  s.knownHands=[];
   const seats=Array.from({length:4},(_,i)=>(actor+i)%4).filter(i=>s.players[i].hand.length);
   const deck=shuffle(seats.flatMap(i=>s.players[i].hand),random);
   for(const seat of seats)s.players[seat].hand=[];
@@ -101,7 +103,7 @@ export function botSkillAction(state,random=Math.random) {
  if(kind>=2)return {type:'USE_SKILL'};
  const targets=state.players.filter(p=>p.id!==state.actor&&p.hand.length);
  const target=kind===1?nextActive(state,state.actor):targets[Math.floor(random()*targets.length)].id;
- if(kind===1)return {type:'USE_SKILL',target,index:Math.floor(random()*state.players[target].hand.length)};
+ if(kind===1)return {type:'USE_SKILL',target};
  const cards=state.players[state.actor].hand.filter(c=>c.rank!==0);
  return {type:'USE_SKILL',target,cardId:cards[Math.floor(random()*cards.length)].id};
 }
@@ -149,14 +151,16 @@ export function dispatch(state, action) {
     if(!Array.isArray(action.ids)||action.ids.length!==hand.length||new Set(action.ids).size!==hand.length||action.ids.some(id=>!hand.some(c=>c.id===id)))throw new Error('손패 순서가 올바르지 않습니다.');
     s.players[seat].hand=action.ids.map(id=>hand.find(c=>c.id===id));
   }else throw new Error('알 수 없는 행동입니다.');
+  // Forget cards as soon as they leave the observed hand, even if they later return.
+  s.knownHands=(s.knownHands??[]).map(k=>({...k,ids:k.ids.filter(id=>s.players[k.subject].hand.some(c=>c.id===id))})).filter(k=>k.ids.length);
   return s;
 }
 // Public/player-specific projection, usable by a future authoritative server.
 export function viewFor(state, viewer) {
   const result=state.draw&&[state.draw.actor,state.draw.source].includes(viewer)?structuredClone(state.draw):null;
   const participants=state.phase==='reveal'&&state.draw?[state.draw.actor,state.draw.source]:[state.actor,nextActive(state,state.actor)];
-  const skill=state.phase==='skill'&&state.skill?{actor:state.skill.actor,kind:state.skill.kind,target:state.skill.target,reflected:state.skill.reflected,card:structuredClone(state.skill.privateViews.find(v=>v.seat===viewer)?.card??null)}:null;
+  const skill=state.phase==='skill'&&state.skill?{actor:state.skill.actor,kind:state.skill.kind,target:state.skill.target,reflected:state.skill.reflected,card:structuredClone(state.skill.privateViews.find(v=>v.seat===viewer)?.card??null),cards:structuredClone(state.skill.privateViews.find(v=>v.seat===viewer)?.cards??null)}:null;
   return {skill,skillUsed:[...(state.skillUsed??[false,false,false,false])],shields:[...(state.shields??[false,false,false,false])],phase:state.phase,actor:state.actor,turn:state.turn,order:[...state.order],revision:state.revision,selected:participants.includes(viewer)?state.selected:null,draw:result,
-    players:state.players.map(p=>({id:p.id,character:p.character,hand:p.id===viewer?structuredClone(p.hand):p.hand.map((_,i)=>({slot:i}))})),discardedCount:state.discarded.length};
+    players:state.players.map(p=>({id:p.id,character:p.character,hand:p.id===viewer?structuredClone(p.hand):p.hand.map((c,i)=>(state.knownHands??[]).some(k=>k.viewer===viewer&&k.subject===p.id&&k.ids.includes(c.id))?{slot:i,rank:c.rank,suit:c.suit}:{slot:i})})),discardedCount:state.discarded.length};
 }
 export function label(card) {return card.rank===0?'JOKER':({1:'A',11:'J',12:'Q',13:'K'}[card.rank]??String(card.rank));}

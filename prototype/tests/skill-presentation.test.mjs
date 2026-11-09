@@ -17,10 +17,10 @@ test('each skill has a distinct effect; public markup never contains revealed ca
 test('peek presentation retains viewer privacy even when reflected',()=>{
  for(const reflected of [false,true]){
   const s=createGame(24,[1,2,0,3]);s.shields[1]=reflected;
-  const n=dispatch(s,{type:'USE_SKILL',target:1,index:0});
+  const n=dispatch(s,{type:'USE_SKILL',target:1});
   for(let seat=0;seat<4;seat++){
    const event=viewFor(n,seat).skill;
-   assert.equal(Boolean(event.card),seat===(reflected?1:0));
+   assert.equal(Boolean(event.cards),seat===(reflected?1:0));
    assert.match(skillFeedback(event).privateLabel,/열람자/);
   }
  }

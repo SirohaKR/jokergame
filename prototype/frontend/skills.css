@@ -52,3 +52,9 @@
 @keyframes cutin-flash{0%,80%{opacity:0}86%{opacity:.75}100%{opacity:0}}
 @media(max-width:600px){.cutin-band{height:46%}.cutin-title span{font-size:12px}}
 @media(prefers-reduced-motion:reduce){.skill-cutin{animation:cutin-out 2.4s steps(1) both}.cutin-band,.cutin-art,.cutin-title,.cutin-flash{animation:none}.cutin-flash{display:none}}
+
+/* Only viewer-filtered, previously observed cards receive this face. */
+.card-back.known-card{background:#fff8dc;color:#302438;border-color:#c7a35b}
+.card-back.known-card i{display:block;width:auto;height:auto;border:0;border-radius:0;font-style:normal;line-height:1.1;text-align:center}
+.backs .known-card i{position:absolute;top:6px;left:6px;font-size:12px;text-align:left}
+.skill-private strong{display:block;max-width:min(80vw,520px);max-height:100px;overflow:auto;overflow-wrap:anywhere}

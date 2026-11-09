@@ -1,15 +1,17 @@
 import http from 'node:http';
 import {createDevApi} from './dev-api.mjs';
+import {createUIPlansApi} from './ui-plans.mjs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {readFile,stat} from 'node:fs/promises';
 const base=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const {version}=JSON.parse(await readFile(path.join(base,'package.json'),'utf8'));
 const types={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.png':'image/png','.webp':'image/webp','.json':'application/json; charset=utf-8','.sql':'text/plain; charset=utf-8','.txt':'text/plain; charset=utf-8'};
-export function createServer(){const devApi=createDevApi();const server=http.createServer(async(req,res)=>{
+export function createServer({uiPlansDir=process.env.UI_PLANS_DIR||path.join(base,'..','output','ui-designs')}={}){const uiPlans=createUIPlansApi(uiPlansDir);const devApi=createDevApi();const server=http.createServer(async(req,res)=>{
   try{
     const url=new URL(req.url,'http://localhost'),p=decodeURIComponent(url.pathname);
     if(p==='/api/health'){if(!['GET','HEAD'].includes(req.method)){res.writeHead(405,{'Allow':'GET, HEAD'});res.end();return;}res.writeHead(200,{'Content-Type':types['.json']});res.end(req.method==='HEAD'?undefined:JSON.stringify({status:'ok',mode:'local-ai',version,database:'not-connected'}));return;}
+    if(await uiPlans(req,res,p))return;
     if(await devApi(req,res,p))return;
     if(p.startsWith('/api/')){res.writeHead(501,{'Content-Type':types['.json']});res.end(JSON.stringify({code:'NOT_IMPLEMENTED',message:'온라인 API는 설계 단계입니다.'}));return;}
     if(!['GET','HEAD'].includes(req.method)){res.writeHead(405,{'Allow':'GET, HEAD'});res.end();return;}

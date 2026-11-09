@@ -9,6 +9,9 @@ services:
     environment:
       HOST: 0.0.0.0
       PORT: 4173
+      UI_PLANS_DIR: /app/data/ui-designs
+    volumes:
+      - ui-designs:/app/data
     restart: unless-stopped
     read_only: true
     tmpfs:
@@ -20,3 +23,6 @@ services:
       interval: 30s
       timeout: 5s
       retries: 3
+
+volumes:
+  ui-designs:

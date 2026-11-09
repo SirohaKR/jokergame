@@ -4,7 +4,7 @@
 
 prototype에서 `npm test`: 27개 테스트 통과. 기존 1,000시드 규칙 검증 및 새 HTTP 4인 참가/권한 검증 포함.
 
-개발 API: POST /api/dev/matches 및 /:id/join 본문은 {nickname,characterId}. characterId는 seoha/orca/haru/yuna. 반환된 token은 참가자별 비밀이며 공유하지 않는다. GET /:id, POST /:id/start, GET /:id/snapshot, POST /:id/commands는 Authorization: Bearer <token>을 요구한다. POST는 application/json 본문 필수. 명령 본문은 {commandId,expectedRevision,action}. 지원 행동은 BEGIN_DRAW, SELECT(index), DRAW(index), DISCARD(cardId), REORDER(ids), USE_SKILL(전달: target/cardId, 열람: target/index, 반사·재분배: 추가 인자 없음). 결과 및 스킬 연출 종료는 클라이언트 명령으로 허용하지 않는다.
+개발 API: POST /api/dev/matches 및 /:id/join 본문은 {nickname,characterId}. characterId는 seoha/orca/haru/yuna. 반환된 token은 참가자별 비밀이며 공유하지 않는다. GET /:id, POST /:id/start, GET /:id/snapshot, POST /:id/commands는 Authorization: Bearer <token>을 요구한다. POST는 application/json 본문 필수. 명령 본문은 {commandId,expectedRevision,action}. 지원 행동은 BEGIN_DRAW, SELECT(index), DRAW(index), DISCARD(cardId), REORDER(ids), USE_SKILL(전달: target/cardId, 열람: target, 반사·재분배: 추가 인자 없음). 결과 및 스킬 연출 종료는 클라이언트 명령으로 허용하지 않는다.
 
 2026-11-05: 서버가 250ms 간격으로 만료된 턴을 처리한다. 요청이 없어도 게임은 진행되며, 지연 후에는 한 번에 한 단계만 넘기고 다음 단계의 시간을 온전히 부여한다. 마지막 참가 후 30분이 지난 대기방과 종료 후 15분이 지난 방은 정리한다. 타이머는 HTTP 서버 시작/종료와 함께 시작/정지한다.
 

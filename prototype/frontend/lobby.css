@@ -132,3 +132,5 @@
  .drawer-list{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media(prefers-reduced-motion:reduce){.lobby-standing,.lobby-bubble,.mode-card,.seat,.seat-bubble,.room-drawer{animation:none}}
+
+.editor-link{color:#e9dcfa;text-decoration:none;white-space:nowrap;font-size:12px;padding:8px 12px;border:1px solid #ffffff40;border-radius:8px;background:#17142a99}
