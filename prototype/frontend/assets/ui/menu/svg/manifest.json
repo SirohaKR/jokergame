@@ -1,0 +1,87 @@
+{
+  "version": 1,
+  "created": "2026-11-10",
+  "source": "Original purpose-built SVG symbols authored for this project; no reference-game artwork copied.",
+  "style": {
+    "outline": "#294D66",
+    "accent": "#56BDDE",
+    "secondary": "#DDF3FA",
+    "surface": "#FFFFFF",
+    "stroke": 2.6
+  },
+  "background": "transparent",
+  "assets": [
+    {
+      "id": "mode-regular",
+      "file": "mode-regular.svg",
+      "label": "정규전",
+      "meaning": "세 장의 카드",
+      "width": 80,
+      "height": 80
+    },
+    {
+      "id": "mode-short",
+      "file": "mode-short.svg",
+      "label": "단기전",
+      "meaning": "카드와 번개",
+      "width": 80,
+      "height": 80
+    },
+    {
+      "id": "mode-friend",
+      "file": "mode-friend.svg",
+      "label": "친구대전",
+      "meaning": "두 카드와 교차 방향",
+      "width": 80,
+      "height": 80
+    },
+    {
+      "id": "mode-ai",
+      "file": "mode-ai.svg",
+      "label": "AI대전",
+      "meaning": "카드와 연습 표적",
+      "width": 80,
+      "height": 80
+    },
+    {
+      "id": "menu-characters",
+      "file": "menu-characters.svg",
+      "label": "캐릭터",
+      "meaning": "캐릭터 카드 목록",
+      "width": 80,
+      "height": 80
+    },
+    {
+      "id": "menu-shop",
+      "file": "menu-shop.svg",
+      "label": "상점",
+      "meaning": "쇼핑백",
+      "width": 80,
+      "height": 80
+    },
+    {
+      "id": "menu-friends",
+      "file": "menu-friends.svg",
+      "label": "친구",
+      "meaning": "함께 있는 두 사람",
+      "width": 80,
+      "height": 80
+    },
+    {
+      "id": "menu-record",
+      "file": "menu-record.svg",
+      "label": "전적",
+      "meaning": "대전 기록과 시간",
+      "width": 80,
+      "height": 80
+    },
+    {
+      "id": "menu-help",
+      "file": "menu-help.svg",
+      "label": "게임 방법",
+      "meaning": "안내 책자",
+      "width": 80,
+      "height": 80
+    }
+  ]
+}

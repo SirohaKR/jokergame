@@ -1,0 +1,214 @@
+{
+  "created": "2026-11-09",
+  "source": "Original illustrations generated with image_gen for this project.",
+  "alpha": "straight RGBA transparency",
+  "assets": [
+    {
+      "id": "mode-regular",
+      "label": "정규전",
+      "file": "mode-regular.png",
+      "sourceFile": "/workspace/generated_images/exec-35ae39d3-8446-46c3-8831-d87fb9ecf09b.png",
+      "subject": "A compact fan of exactly three ivory playing cards with deep teal backs and one coral diamond face, fine muted brass corner ornaments, a small teal ribbon tucked behind. Clearly a three-round card match.",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "transparentPixelRatio": 0.5554,
+      "visibleBounds": [
+        119,
+        169,
+        1130,
+        1101
+      ],
+      "cornerAlpha": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "mode-short",
+      "label": "단기전",
+      "file": "mode-short.png",
+      "sourceFile": "/workspace/generated_images/exec-2d2515ff-404c-471a-a01b-74438c5bf354.png",
+      "subject": "A small charming hourglass with ivory frame, coral red end caps, clear glass and turquoise sand, a tiny brass clock winding knob. Clear strong hourglass silhouette.",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "transparentPixelRatio": 0.6517,
+      "visibleBounds": [
+        288,
+        97,
+        980,
+        1151
+      ],
+      "cornerAlpha": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "mode-friend",
+      "label": "친구대전",
+      "file": "mode-friend.png",
+      "sourceFile": "/workspace/generated_images/exec-ecf0a458-f340-46dc-a1a1-75faa44cbd93.png",
+      "subject": "Two ivory playing cards leaning toward one another, one coral heart and one turquoise club, tied at the base by a short soft blue ribbon. Friendly versus card match, compact symmetrical composition.",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "transparentPixelRatio": 0.5735,
+      "visibleBounds": [
+        95,
+        206,
+        1148,
+        1118
+      ],
+      "cornerAlpha": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "mode-ai",
+      "label": "AI대전",
+      "file": "mode-ai.png",
+      "sourceFile": "/workspace/generated_images/exec-78339023-2acc-45a5-a089-4e2b641da7fe.png",
+      "subject": "A cute small ivory and muted teal clockwork robot head with two friendly blue eyes and short antenna, peeking over a single ivory playing card showing a coral diamond. Compact friendly training opponent, not futuristic or neon.",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "transparentPixelRatio": 0.6604,
+      "visibleBounds": [
+        276,
+        44,
+        997,
+        1218
+      ],
+      "cornerAlpha": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "menu-characters",
+      "label": "캐릭터",
+      "file": "menu-characters.png",
+      "sourceFile": "/workspace/generated_images/exec-8f729a0f-7140-43b1-8869-9071932a37b2.png",
+      "subject": "Two overlapping small portrait cards in ivory and pale blue frames: front card shows a tiny chibi silver-haired fantasy girl face with amber eyes, back card shows a tiny purple-haired fantasy girl face. These are generic character collection portraits, not a full standing character.",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "transparentPixelRatio": 0.4527,
+      "visibleBounds": [
+        88,
+        96,
+        1180,
+        1182
+      ],
+      "cornerAlpha": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "menu-shop",
+      "label": "상점",
+      "file": "menu-shop.png",
+      "sourceFile": "/workspace/generated_images/exec-8282def0-4661-43e7-bad1-7e8f788605b5.png",
+      "subject": "A small open teal leather coin purse with a cream flap and muted brass clasp, three chunky warm gold coins partly visible, a tiny coral ribbon. Richly illustrated shop object, no currency symbols.",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "transparentPixelRatio": 0.5614,
+      "visibleBounds": [
+        122,
+        114,
+        1133,
+        1143
+      ],
+      "cornerAlpha": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "menu-friends",
+      "label": "친구",
+      "file": "menu-friends.png",
+      "sourceFile": "/workspace/generated_images/exec-fce22d2e-af67-4aef-8c11-d1c1d86a90c6.png",
+      "subject": "Two overlapping puffy speech bubbles as tangible painted tokens, one pale cyan with a small friendly ivory cat face and the second coral with a small friendly ivory bunny face, a little cream heart between them. Readable friendly social menu symbol.",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "transparentPixelRatio": 0.5877,
+      "visibleBounds": [
+        85,
+        152,
+        1155,
+        1109
+      ],
+      "cornerAlpha": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "menu-record",
+      "label": "전적",
+      "file": "menu-record.png",
+      "sourceFile": "/workspace/generated_images/exec-c79ac585-9e13-426d-af47-5e50ab3335a7.png",
+      "subject": "An open ivory match record notebook with a teal cover, tiny orderly blue tally marks (not readable words), a small brass laurel medal and coral bookmark ribbon along the lower corner. Compact game history object.",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "transparentPixelRatio": 0.5571,
+      "visibleBounds": [
+        62,
+        260,
+        1144,
+        1088
+      ],
+      "cornerAlpha": [
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "menu-help",
+      "label": "게임 방법",
+      "file": "menu-help.png",
+      "sourceFile": "/workspace/generated_images/exec-0513b3bc-3a40-4f01-92fd-4abd4ca03c88.png",
+      "subject": "A slightly open thick ivory rule book with a pale teal hard cover and brass corner protectors, one ivory playing card with a coral heart tucked into the pages and a coral ribbon bookmark. Readable book silhouette.",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "transparentPixelRatio": 0.5433,
+      "visibleBounds": [
+        121,
+        123,
+        1152,
+        1147
+      ],
+      "cornerAlpha": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ]
+}

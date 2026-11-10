@@ -1,0 +1,12 @@
+{
+  "assets": [
+    {
+      "file": "lounge.png",
+      "kind": "original generated background illustration",
+      "created": "2026-11-09",
+      "purpose": "로비와 캐릭터 화면의 공용 라운지 배경",
+      "description": "바다가 보이는 밝은 카드게임 라운지. 인물·문자·UI가 없는 독립 배경.",
+      "source": "Generated with the image generation tool for this project; no reference-game images are bundled."
+    }
+  ]
+}
