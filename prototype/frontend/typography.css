@@ -1,0 +1,36 @@
+/* Approved lobby option 3: Jalnan titles and menus, Pretendard supporting text.
+   Original font files and license notices are bundled under assets/fonts/. */
+@font-face {
+ font-family:'Jalnan';
+ src:url('assets/fonts/jalnan/JalnanOTF00.woff') format('woff');
+ font-weight:700;
+ font-style:normal;
+ font-display:swap;
+}
+@font-face {
+ font-family:'Pretendard';
+ src:url('assets/fonts/pretendard/PretendardVariable.woff2') format('woff2');
+ font-weight:100 900;
+ font-style:normal;
+ font-display:swap;
+}
+:root {
+ --font-body:'Pretendard','Malgun Gothic','Apple SD Gothic Neo',sans-serif;
+ --font-title:'Jalnan',var(--font-body);
+ font-family:var(--font-body);
+}
+.game-hub,.character-hub,.salon-room {font-family:var(--font-body)}
+#app :is(h1,h2,h3,h4),
+.mode-label b,.hub-dock-item>span:last-of-type,.hub-help button>span,
+.hub-brand>span,.hub-play-heading>span,.hub-account #nickname,
+.roster-item>span,.collection-panel-cap>span,.collection-library-heading>span,
+.collection-apply button,.salon-start>span:first-child,.settings-done,
+.brand>span:last-child,.primary.large,.draw-button {
+ font-family:var(--font-title);
+ font-weight:700;
+ font-synthesis:none;
+}
+/* Keep short secondary labels from inheriting the display face. */
+.hub-brand small,.brand small,.collection-header h1 small,
+.character-about h3 span,.collection-emote-section h4 small,
+.salon-start small,.salon-wordmark small {font-family:var(--font-body)}

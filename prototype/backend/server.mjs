@@ -7,7 +7,7 @@ import {fileURLToPath} from 'node:url';
 import {readFile,stat} from 'node:fs/promises';
 const base=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const {version}=JSON.parse(await readFile(path.join(base,'package.json'),'utf8'));
-const types={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.png':'image/png','.webp':'image/webp','.json':'application/json; charset=utf-8','.sql':'text/plain; charset=utf-8','.txt':'text/plain; charset=utf-8'};
+const types={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.png':'image/png','.webp':'image/webp','.svg':'image/svg+xml','.json':'application/json; charset=utf-8','.sql':'text/plain; charset=utf-8','.txt':'text/plain; charset=utf-8'};
 export function createServer({uiPlansDir=process.env.UI_PLANS_DIR||path.join(base,'..','output','ui-designs'),scriptsDir=process.env.SCRIPTS_DIR||path.join(base,'..','output','scripts')}={}){const uiPlans=createUIPlansApi(uiPlansDir);const scripts=createScriptsApi(scriptsDir);const devApi=createDevApi();const server=http.createServer(async(req,res)=>{
   try{
     const url=new URL(req.url,'http://localhost'),p=decodeURIComponent(url.pathname);

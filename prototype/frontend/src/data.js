@@ -1,3 +1,4 @@
+import {normalizeSoundVolume} from './settings.js';
 // Keep legacy IDs and numeric selection slots compatible with saved profiles and the dev API.
 export const CHARACTERS=[
  {id:'seoha',assetId:'serena',name:'세레나',tag:'능청스러운 환영술사',color:'#b6a6cf',portrait:{size:'220%',x:'38%',y:'2%'},emoteLabels:{laugh:'후후, 귀여워',shock:'…잠깐?',hello:'왔어, 자기?',think:'정말 그럴까?'}},
@@ -10,5 +11,10 @@ export const imagePath=c=>`assets/lobby/${c.assetId??c.id}.png`;
 // Skill cut-in art from the shared Drive (스킬 folder). Characters without one fall back to their standing art.
 export const SKILL_CUTINS={serena:'assets/skills/serena.webp',elysia:'assets/skills/elysia.webp',lunea:'assets/skills/lunea.webp',rosette:'assets/skills/rosette.webp'};
 export const cutinPath=c=>SKILL_CUTINS[c.assetId??c.id]??null;
-export function readProfile(){try{const p=JSON.parse(localStorage.getItem('joker-profile-v1'));return {nickname:typeof p?.nickname==='string'?p.nickname.slice(0,16):'플레이어',character:Number.isInteger(p?.character)&&p.character>=0&&p.character<4?p.character:0,sound:p?.sound!==false,sets:Number.isInteger(p?.sets)?p.sets:0};}catch{return {nickname:'플레이어',character:0,sound:true,sets:0};}}
+export function readProfile(){try{const p=JSON.parse(localStorage.getItem('joker-profile-v1'));return {nickname:typeof p?.nickname==='string'?p.nickname.slice(0,16):'플레이어',character:Number.isInteger(p?.character)&&p.character>=0&&p.character<4?p.character:0,sound:p?.sound!==false,soundVolume:normalizeSoundVolume(p?.soundVolume),sets:Number.isInteger(p?.sets)?p.sets:0};}catch{return {nickname:'플레이어',character:0,sound:true,soundVolume:100,sets:0};}}
 export function saveProfile(p){try{localStorage.setItem('joker-profile-v1',JSON.stringify(p));return true;}catch{return false;}}
+
+// Replace only waiting-room artwork here; gameplay portraits and cut-ins stay independent.
+// Example: serena: {src:'assets/lounge/serena.webp',position:'50% 25%',scale:1,fit:'cover'}
+export const WAITING_ARTWORK={};
+export function waitingArtwork(c){const art=WAITING_ARTWORK[c.assetId??c.id];return {src:art?.src??imagePath(c),position:art?.position??'50% 8%',scale:art?.scale??1.12,fit:art?.fit??'cover'};}

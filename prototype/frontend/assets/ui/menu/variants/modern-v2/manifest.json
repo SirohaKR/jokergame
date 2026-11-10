@@ -1,0 +1,52 @@
+{
+  "created": "2026-11-10",
+  "status": "review",
+  "direction": "Contemporary clean white / cyan / cobalt game illustration. Replaces vintage ornamented mode artwork only; banner layout retained.",
+  "source": "Generated independently with image_gen for this project.",
+  "assets": [
+    {
+      "id": "mode-regular",
+      "label": "정규전",
+      "file": "mode-regular.png",
+      "sourceFile": "/workspace/generated_images/exec-62f0bfe9-20d2-4f8c-89d2-5c19e9c6098b.png",
+      "subject": "A dynamic fan of three fresh white playing cards, tilted slightly clockwise. One card face has one large clean coral-red diamond; the other two have bold cobalt-blue and sky-cyan card backs with a single simple geometric stripe. Crisp pristine cards, modest navy edge outlines, small cyan angular backing shape integrated behind the fan. No tiny decorative patterns. Visually substantial but simple.",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "transparentPixelRatio": 0.5196
+    },
+    {
+      "id": "mode-short",
+      "label": "단기전",
+      "file": "mode-short.png",
+      "sourceFile": "/workspace/generated_images/exec-a3abc3cd-bc95-418d-ba30-11465e881965.png",
+      "subject": "A contemporary compact white-and-cyan stopwatch tilted slightly to the right, with a dark navy clean dial and one bold coral hand, beside one white playing card with a red diamond. A couple of short solid cyan speed slashes attached to the left give a quick-match feeling. No clock numerals, no lettering. Modern sporting equipment, NOT an hourglass or antique timepiece.",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "transparentPixelRatio": 0.6066
+    },
+    {
+      "id": "mode-friend",
+      "label": "친구대전",
+      "file": "mode-friend.png",
+      "sourceFile": "/workspace/generated_images/exec-48df50f0-6320-44a2-9d81-2501031f2422.png",
+      "subject": "Two modern white playing cards facing one another as a friendly versus symbol: left card with a bold coral heart and coral edge, right card with a bold cobalt spade and cyan edge. A tiny angular cyan meeting spark between them, not a lightning storm. Offset overlapping composition with clean two-tone depth. No bow or ribbon. Readable as a card duel at small sizes.",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "transparentPixelRatio": 0.5115
+    },
+    {
+      "id": "mode-ai",
+      "label": "AI대전",
+      "file": "mode-ai.png",
+      "sourceFile": "/workspace/generated_images/exec-1b29d162-6168-4a79-bed8-22812b41cb3d.png",
+      "subject": "A compact modern training-bot bust, clean white shell with sky-cyan side panels, dark navy rounded rectangular visor with two simple bright blue eye lights, holding a single white playing card with a coral-red diamond. Small friendly expression but no blush or baby proportions. Contemporary clean game mascot equipment, no antenna pompom, no brass, no cogs, no winding key, no steampunk.",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "transparentPixelRatio": 0.4637
+    }
+  ]
+}
