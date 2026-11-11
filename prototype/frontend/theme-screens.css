@@ -106,3 +106,6 @@
 }
 .room-hub .room-status{padding:9px 22px;background:#fff;transform:skewX(-14deg);box-shadow:0 4px 0 var(--sh)}
 .room-hub .room-status>*{transform:skewX(14deg)}
+/* Same framing for every seat: the face square (FACE_CROPS) is 62% of the card width, centered, 8% from the top. */
+.room-hub .room-seat-art{container-type:size}
+.room-hub .room-seat-art img.is-framed{--k:.62;--w:calc(100cqw * var(--k) * 1104 / var(--fs));position:absolute;max-width:none;width:var(--w);height:auto;left:calc(50cqw - var(--w) * (var(--fx) + var(--fs) / 2) / 1104);top:calc(8cqh - var(--w) * var(--fy) / 1104);object-fit:fill;transform:none}
