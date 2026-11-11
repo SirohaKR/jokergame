@@ -17,4 +17,11 @@ export function saveProfile(p){try{localStorage.setItem('joker-profile-v1',JSON.
 // Replace only waiting-room artwork here; gameplay portraits and cut-ins stay independent.
 // Example: serena: {src:'assets/lounge/serena.webp',position:'50% 25%',scale:1,fit:'cover'}
 export const WAITING_ARTWORK={};
+// Face square (x, y, size) inside each 1104x1824 lobby illustration. Used to frame every character the same way.
+export const FACE_CROPS={
+ serena:{x:235,y:120,size:620},
+ elysia:{x:285,y:190,size:550},
+ lunea:{x:210,y:150,size:650},
+ rosette:{x:385,y:170,size:530}
+};
 export function waitingArtwork(c){const art=WAITING_ARTWORK[c.assetId??c.id];return {src:art?.src??imagePath(c),position:art?.position??'50% 8%',scale:art?.scale??1.12,fit:art?.fit??'cover'};}

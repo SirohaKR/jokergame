@@ -1,5 +1,5 @@
 import {settingsButton} from './settings.js';
-import {CHARACTERS,imagePath} from './data.js';
+import {CHARACTERS,imagePath,FACE_CROPS} from './data.js';
 import {EMOTES,emoteSprite,emoteLabel} from './emotes.js';
 import {SKILLS} from './game.js';
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -36,12 +36,7 @@ const descriptions=[
 const roles=['카드 전달','패 확인','스킬 반사','패 재분배'];
 // Square crops in the 1104×1824 lobby artwork. Match eye height and face scale,
 // rather than the hair silhouette; these crops only affect the collection roster.
-const collectionCrops={
- serena:{x:235,y:120,size:620},
- elysia:{x:285,y:190,size:550},
- lunea:{x:210,y:150,size:650},
- rosette:{x:385,y:170,size:530}
-};
+const collectionCrops=FACE_CROPS;
 const collectionPortrait=c=>{
  const crop=collectionCrops[c.assetId];
  const framing=crop?`--face-zoom:${1104/crop.size*100}%;background-position:${crop.x/(1104-crop.size)*100}% ${crop.y/(1824-crop.size)*100}%`:`background-position:${c.portrait.x} ${c.portrait.y}`;

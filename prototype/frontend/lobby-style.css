@@ -1,0 +1,81 @@
+/* Lobby style (2026-11-10): bright skewed white panels, sky main color, navy accent.
+   Desktop only; mobile keeps game-hub.css / lobby-banners.css layout. No gradients. */
+@media(min-width:801px){
+.game-hub{--c:#4FC0EC;--c2:#1E9AD6;--ink:#20384e;--glass:#ffffff;--pt:#2F4F86}
+
+/* geometric shards */
+.game-hub:before{content:'';position:absolute;z-index:2;right:0;top:66px;width:300px;height:230px;pointer-events:none;background:#ffffff8c;clip-path:polygon(78% 0,82% 0,30% 100%,26% 100%,78% 0,92% 0,100% 0,100% 6%,50% 100%,40% 100%)}
+/* top bar */
+.game-hub .hub-header{top:0;left:0;right:0;height:66px;align-items:center;padding:0 22px;background:#ffffffd9;box-shadow:0 2px 0 #ffffff,0 3px 12px #1778a622;backdrop-filter:blur(6px)}
+.game-hub .hub-account{min-width:0;height:54px;padding:4px 30px 4px 4px;background:transparent;border:0;box-shadow:none;clip-path:none}
+.game-hub .hub-account .collection-face{width:48px;border:2px solid #fff;box-shadow:0 0 0 2px var(--c);transform:skewX(-8deg)}
+.game-hub .hub-account label small{color:var(--c2);font-style:italic;letter-spacing:1.5px}
+.game-hub .hub-account input{font-size:18px;color:var(--ink)}
+.game-hub .hub-play-count{height:34px;min-width:150px;background:#fff;border:0;box-shadow:inset 0 0 0 1.5px #A9DCEF;border-radius:0;transform:skewX(-14deg)}
+.game-hub .hub-play-count>*{transform:skewX(14deg)}
+.game-hub .hub-play-count>svg{background:var(--c);color:#fff;border-radius:50%;padding:4px;width:24px;height:24px}
+.game-hub .hub-icon-button,.game-hub .hub-devtools summary{background:var(--ink)!important;color:#fff;box-shadow:none;transform:skewX(-14deg)}
+/* help */
+.game-hub .hub-help{top:92px;left:22px}
+.game-hub .hub-help button{flex-direction:row;width:auto;gap:8px;padding:6px 16px 6px 8px;background:var(--glass);transform:skewX(-14deg);box-shadow:0 3px 0 #A9DCEF,0 6px 14px #1d4a6a22}
+.game-hub .hub-help button>*{transform:skewX(14deg)}
+.game-hub .hub-help .menu-art{width:38px;height:38px;filter:none}
+.game-hub .hub-help button>span{background:none;padding:0;font-size:14px;color:var(--ink)}
+/* mode stack */
+.game-hub .hub-play{right:34px;width:440px}
+.game-hub .hub-modes{display:grid;grid-template-columns:1fr 1fr;gap:12px 14px}
+.game-hub .hub-mode.mode-featured,.game-hub .hub-mode.mode-secondary{grid-column:1/-1!important}
+.game-hub .hub-mode,.game-hub .mode-featured,.game-hub .mode-secondary,.game-hub .hub-mode:not(.mode-featured):not(.mode-secondary){height:86px!important;min-height:0!important;margin:0!important;padding:0 22px 0 112px!important;grid-column:auto;background:var(--glass)!important;transform:skewX(-14deg)!important;box-shadow:0 4px 0 #A9DCEF,0 8px 18px #1d4a6a26!important;border-left:6px solid #c9d6de!important}
+.game-hub .hub-mode:before,.game-hub .hub-mode:after{display:none!important}
+.game-hub .hub-mode>*{transform:skewX(14deg)}
+.game-hub .hub-mode .mode-art,.game-hub .mode-featured .mode-art,.game-hub .mode-secondary .mode-art,.game-hub .hub-mode:not(.mode-featured):not(.mode-secondary) .mode-art{position:absolute!important;left:18px!important;top:6px!important;width:74px!important;height:74px!important;margin:0!important;transform:skewX(14deg)!important;display:grid;place-items:center;background:#E3F5FD;clip-path:polygon(14% 0,100% 0,86% 100%,0 100%)}
+.game-hub .hub-mode .menu-art{width:62px!important;height:62px!important;scale:1!important}
+.game-hub .hub-mode .mode-label{flex-direction:column}
+.game-hub .hub-mode .mode-label:before{order:0;font:italic 800 11px/1 var(--font-body,sans-serif);letter-spacing:1.5px;color:var(--c2);margin-bottom:4px}
+.game-hub .mode-three .mode-label:before{content:'RANKED MATCH'}.game-hub .mode-short .mode-label:before{content:'QUICK MATCH'}
+.game-hub .mode-room .mode-label:before{content:'FRIEND MATCH'}.game-hub .mode-ai .mode-label:before{content:'PRACTICE'}
+.game-hub .hub-mode .mode-label>b,.game-hub .mode-featured .mode-label>b,.game-hub .mode-secondary .mode-label>b,.game-hub .hub-mode:not(.mode-featured):not(.mode-secondary) .mode-label>b{order:1;font-size:26px!important;line-height:1.1!important;color:var(--ink)!important;letter-spacing:-.5px}
+.game-hub .mode-featured .mode-label>b:after{display:none}
+.game-hub .hub-mode .mode-label em{display:none}
+.game-hub .hub-mode .mode-label>small{position:absolute;right:-150px;top:50%;margin:0;transform:translateY(-50%);border:0;background:#eef2f5;color:#7c8f9d;padding:5px 10px;font-size:11px;letter-spacing:0;white-space:nowrap}
+.game-hub .hub-mode .mode-label{position:static}
+.game-hub .hub-mode .mode-arrow{display:none}
+.game-hub .hub-mode.unavailable{opacity:1}
+.game-hub .hub-mode.unavailable .mode-art{filter:saturate(.6)}
+.game-hub .hub-mode.available.available.available.available{background:#1E9AD6!important;border-left-color:var(--pt)!important;box-shadow:0 4px 0 #1778a6,0 10px 22px #1E9AD655!important}
+.game-hub .hub-mode.available.available.available.available .mode-art{background:#ffffff}
+.game-hub .hub-mode.available.available.available.available .mode-label>b{color:#fff!important}
+.game-hub .hub-mode.available.available.available.available .mode-label:before{color:#E3F5FD}
+.game-hub .hub-mode.available.available.available.available .mode-label>small{background:var(--pt);color:#fff;font-weight:800}
+.game-hub .hub-mode.available.available.available.available .mode-label>small:after{content:'  ▶'}
+/* bottom dock */
+.game-hub .hub-footer{height:104px;background:none;box-shadow:none;border:0;clip-path:none}
+.game-hub .hub-brand{background:var(--glass);padding:10px 26px 10px 18px;transform:skewX(-14deg);box-shadow:0 3px 0 #A9DCEF}
+.game-hub .hub-brand>*{transform:skewX(14deg)}
+.game-hub .hub-dock{gap:10px;align-items:center}
+.game-hub .hub-dock-item{min-width:92px;height:84px;padding:6px 10px 0;justify-content:center;background:var(--glass);transform:skewX(-14deg);box-shadow:0 4px 0 #A9DCEF,0 8px 16px #1d4a6a22}
+.game-hub .hub-dock-item>*{transform:skewX(14deg)}
+.game-hub .dock-emblem{height:48px;width:52px}.game-hub .dock-emblem .menu-art{width:48px;height:48px;filter:none}
+.game-hub .hub-dock-item>span:not(.dock-emblem){font-size:14px;color:var(--ink)}
+.game-hub .hub-dock-item small{position:absolute;top:6px;right:8px;bottom:auto;background:#eef2f5;color:#8295a3;padding:1px 4px;font-size:8px}
+.game-hub .hub-dock-item:first-child{border-bottom:4px solid var(--c)}
+.game-hub .hub-dock-item:first-child:after{display:none}
+.game-hub .hub-quick{bottom:118px}
+.game-hub .hub-mode.available.available.available.available .mode-label>small{color:#fff!important}
+.game-hub .hub-play{top:max(96px,calc(50% - 200px));bottom:auto}
+/* playable mode: no status label, white chevron at the end */
+.game-hub .hub-mode.available.available.available.available .mode-label>small{display:none}
+.game-hub .hub-mode.available.available.available.available .mode-arrow{display:grid!important;position:absolute;right:26px;top:50%;margin:0;transform:translateY(-50%) skewX(14deg);color:#fff}
+.game-hub .hub-mode.available.available.available.available .mode-arrow svg{width:30px!important;height:30px!important;stroke-width:3}
+/* half-width row: 친구대전 · AI대전 */
+.game-hub .hub-mode.mode-compact.mode-compact.mode-compact{grid-column:auto!important;height:96px!important;padding:0 10px 0 78px!important}
+.game-hub .hub-mode.mode-compact.mode-compact.mode-compact .mode-art{left:12px!important;top:16px!important;width:58px!important;height:64px!important}
+.game-hub .hub-mode.mode-compact.mode-compact.mode-compact .menu-art{width:50px!important;height:50px!important}
+.game-hub .hub-mode.mode-compact.mode-compact.mode-compact .mode-label>b{font-size:21px!important}
+.game-hub .hub-mode.mode-compact.mode-compact.mode-compact .mode-label:before{font-size:9px;letter-spacing:1px}
+.game-hub .hub-mode.mode-compact.mode-compact.mode-compact .mode-label>small{position:static;order:3;align-self:flex-start;margin-top:5px;transform:none;padding:2px 6px;font-size:9px}
+.game-hub .hub-mode.available.available.available.available .mode-arrow{right:14px}
+.game-hub .hub-mode.available.available.available.available .mode-arrow svg{width:26px!important;height:26px!important}
+}
+/* Landscape phones (src/landscape-viewport.js sets a 1280px layout viewport): fit the screen height exactly. */
+.phone-landscape .game-hub,.phone-landscape .character-hub{min-height:0}
