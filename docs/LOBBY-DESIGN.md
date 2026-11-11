@@ -65,4 +65,5 @@
 - 대전 모드: 화면 오른쪽, 상단 바와 하단 메뉴 사이 세로 중앙. 1줄 정규전, 1줄 단기전, 마지막 줄에 친구대전·AI대전 두 개. 각 버튼은 아이콘 칸 + 영문 라벨(RANKED MATCH / QUICK MATCH / FRIEND MATCH / PRACTICE) + 모드명. 준비 중 모드는 회색 「준비 중」 라벨, 플레이 가능한 모드(AI대전)는 스카이 단색 바·네이비 왼쪽 테두리·흰 화살표(›)로 표시하고 상태 라벨은 붙이지 않는다.
 - 하단: 기울어진 흰 타일 4개(캐릭터·상점·친구·전적), 준비 중은 타일 오른쪽 위 작은 라벨.
 - 아이콘: `assets/ui/menu/svg/README.md` 참고.
-- 모바일은 가로 화면 기준이다. `src/landscape-viewport.js`가 가로로 든 휴대폰(터치, 짧은 변 600px 미만)에서 viewport를 `width=1280`으로 바꿔 PC 로비를 화면에 맞춰 축소해 보여준다. 세로로 들면 기존 모바일 배치로 돌아간다. 대기실은 844×390에서 하단 버튼이 약간 잘려 별도 조정이 필요하다.
+- 모바일은 가로 화면 기준이다. `src/landscape-viewport.js`가 가로로 든 휴대폰(터치, 짧은 변 600px 미만)에서 viewport를 `width=1280`으로 바꿔 PC 로비를 화면에 맞춰 축소해 보여준다. 세로로 들면 기존 모바일 배치로 돌아간다. 
+- 캐릭터 화면과 대기실도 같은 테마를 쓴다: `prototype/frontend/theme-screens.css`. 캐릭터 화면은 기존 마크업에 색·기울기만 덮어쓰고(PC 폭), 대기실은 `src/waiting-room.js` 마크업을 새로 짰다(상단 바 + 규칙 칩, 기울어진 좌석 카드 4개, 이모티콘 바·준비 상태·스카이 「게임 시작」 바). 영문 보조 라벨: WAITING ROOM / PLAYER / AI / SKILL / EMOTE / GAME START / PROFILE / ROSTER.
